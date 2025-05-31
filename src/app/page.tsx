@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components"; // Removed unused Arrow import
 import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
@@ -62,6 +62,7 @@ export default function Home() {
           }),
         }}
       />
+      {/* Section: Hero */}
       <Column fillWidth paddingY="l" gap="m">
         <Column maxWidth="s">
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
@@ -91,29 +92,59 @@ export default function Home() {
                     size="m"
                   />
                 )}
-                {about.title}
+                {about.label} {/* Changed from about.title to about.label for consistency */}
               </Flex>
             </Button>
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+
+      {/* Section: QA Profile Summary & Highlight (New Content) */}
+      <RevealFx translateY="16" delay={0.6} fillWidth>
+        <Column gap="m" paddingY="l" paddingX="l"> {/* Added paddingX */}
+          <Heading as="h2" variant="display-strong-xs">
+            Perfil e Destaques como QA
+          </Heading>
+          <Text onBackground="neutral-weak">
+            Analista de QA dedicado à garantia da qualidade de software, com foco em automação de testes (Robot Framework, Selenium, Cypress, Postman, Python) e experiência em testes funcionais, de carga, API e em ambientes SAP.
+          </Text>
+          <Text variant="body-strong-m" onBackground="neutral-weak">
+            Destaque: Automatizei mais de 600 pedidos via UI em 10h contínuas com Robot Framework, permitindo testes de carga essenciais para microsserviços logísticos.
+          </Text>
+        </Column>
       </RevealFx>
+
+      {/* Section: Projects (Using updated Projects component) */}
+      {/* Removed the first Projects range={[1, 1]} call as it might be redundant now */}
+      {/* If specific project highlights are needed here, adjust the range or logic */}
+
+      {/* Section: Blog (Kept as is, check if still relevant) */}
       {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
+        <Flex fillWidth gap="24" mobileDirection="column" paddingY="l"> {/* Added paddingY */}
           <Flex flex={1} paddingLeft="l">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
+              Últimas do Blog {/* Changed title for clarity */}
             </Heading>
           </Flex>
-          <Flex flex={3} paddingX="20">
+          <Flex flex={3} paddingX="l"> {/* Changed paddingX to 'l' */}
             <Posts range={[1, 2]} columns="2" />
           </Flex>
         </Flex>
       )}
-      <Projects range={[2]} />
+
+      {/* Section: More Projects (Using updated Projects component) */}
+      <RevealFx translateY="16" delay={0.8} fillWidth> {/* Added RevealFx wrapper */}
+         <Column gap="m" paddingY="l" paddingX="l"> {/* Added paddingX */}
+            <Heading as="h2" variant="display-strong-xs">
+                Meus Projetos
+            </Heading>
+            <Projects /> {/* Display all projects from content.js */}
+         </Column>
+      </RevealFx>
+
+      {/* Section: Newsletter (Kept as is) */}
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );
 }
+

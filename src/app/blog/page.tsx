@@ -1,10 +1,10 @@
-import { Column, Flex, Heading } from "@/once-ui/components";
-import { Mailchimp } from "@/components";
-import { Posts } from "@/components/blog/Posts";
+import React from "react"; // Import React for Fragment
+import { Column, Flex, Heading, Text, Button, Icon, IconButton } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
-import { blog, person, newsletter } from "@/app/resources/content";
+import { blog, person, social } from "@/app/resources/content"; // Import social for links
 
 export async function generateMetadata() {
+  // Use 'blog' object which holds Contact page info
   const title = blog.title;
   const description = blog.description;
   const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -16,7 +16,7 @@ export async function generateMetadata() {
       title,
       description,
       type: "website",
-      url: `https://${baseURL}/blog`,
+      url: `https://${baseURL}/contact`, // Update URL to /contact if route changes, otherwise keep /blog
       images: [
         {
           url: ogImage,
@@ -33,19 +33,22 @@ export async function generateMetadata() {
   };
 }
 
-export default function Blog() {
+export default function Contact() { // Renamed component to Contact for clarity
+  const phone = "14-991993618"; // Hardcoded based on CV and content.js description
+  const githubLink = "https://github.com/Lucasolivato"; // Corrected GitHub link
+
   return (
-    <Column maxWidth="s">
+    <Column maxWidth="s" gap="l"> {/* Added gap */}
       <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Blog",
+            "@type": "ContactPage", // Changed type to ContactPage
             headline: blog.title,
             description: blog.description,
-            url: `https://${baseURL}/blog`,
+            url: `https://${baseURL}/contact`, // Update URL to /contact if route changes
             image: `${baseURL}/og?title=${encodeURIComponent(blog.title)}`,
             author: {
               "@type": "Person",
@@ -55,17 +58,66 @@ export default function Blog() {
                 url: `${baseURL}${person.avatar}`,
               },
             },
+            // No list mapping here that needs a React key
           }),
         }}
       />
-      <Heading marginBottom="l" variant="display-strong-s">
+      <Heading marginBottom="m" variant="display-strong-s"> {/* Adjusted margin */}
         {blog.title}
       </Heading>
-      <Column fillWidth flex={1}>
-        <Posts range={[1, 3]} thumbnail />
-        <Posts range={[4]} columns="2" />
+      <Text onBackground="neutral-weak" marginBottom="l"> {/* Added margin */}
+        Entre em contato através dos canais abaixo ou envie uma mensagem direta.
+      </Text>
+
+      {/* Contact Links and Info */}
+      <Column gap="m" vertical="start"> {/* Changed Flex to Column for better vertical spacing */}
+        {/* Mapping over social links */}
+        {social.map((item) =>
+          item.link && (
+            // Using React.Fragment with key for the group of Button/IconButton
+            <React.Fragment key={item.name}>
+              <Button
+                className="s-flex-hide"
+                // key prop moved to Fragment
+                href={item.link}
+                prefixIcon={item.icon}
+                label={item.name}
+                size="m"
+                variant="secondary"
+                target="_blank"
+              />
+              <IconButton
+                className="s-flex-show"
+                // key prop moved to Fragment
+                href={item.link}
+                icon={item.icon}
+                label={item.name} // Added label for accessibility
+                size="l"
+                variant="secondary"
+                target="_blank"
+              />
+            </React.Fragment>
+          ),
+        )}
+        {/* GitHub Link */}
+         <Button
+            key="GitHub"
+            href={githubLink}
+            prefixIcon="github"
+            label="GitHub"
+            size="m"
+            variant="secondary"
+            target="_blank"
+          />
+        {/* Phone Number - Improved Layout */}
+        <Flex gap="8" vertical="center"> {/* Using Flex for icon and text alignment */}
+          <Icon name="phone" size="m" onBackground="neutral-weak"/>
+          <Text variant="body-strong-m">{phone}</Text>
+        </Flex>
       </Column>
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
+
+      {/* Removed Posts and Mailchimp components */}
     </Column>
   );
 }
+

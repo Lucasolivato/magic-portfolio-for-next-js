@@ -1,4 +1,4 @@
-import { getPosts } from "@/app/utils/utils";
+import { work } from "@/app/resources/content"; // Importar dados do content.js
 import { Column } from "@/once-ui/components";
 import { ProjectCard } from "@/components";
 
@@ -7,31 +7,32 @@ interface ProjectsProps {
 }
 
 export function Projects({ range }: ProjectsProps) {
-  let allProjects = getPosts(["src", "app", "work", "projects"]);
+  // Usar diretamente os projetos do content.js
+  let allProjects = work.projects;
 
-  const sortedProjects = allProjects.sort((a, b) => {
-    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
-  });
-
+  // Remover a ordenação por 'publishedAt' pois não existe em content.js
+  // A ordem será a definida em content.js
   const displayedProjects = range
-    ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
-    : sortedProjects;
+    ? allProjects.slice(range[0] - 1, range[1] ?? allProjects.length)
+    : allProjects;
 
   return (
     <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
-      {displayedProjects.map((post, index) => (
+      {displayedProjects.map((project, index) => (
         <ProjectCard
-          priority={index < 2}
-          key={post.slug}
-          href={`work/${post.slug}`}
-          images={post.metadata.images}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          content={post.content}
-          avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
-          link={post.metadata.link || ""}
+          priority={index < 2} // Manter lógica de prioridade
+          key={project.name} // Usar 'name' como chave única
+          // href={`work/${project.slug}`} // Remover href se não houver slugs definidos em content.js ou se não for necessário linkar para página de detalhe
+          href={project.link || "#"} // Usar o link definido em content.js, ou '#' como fallback
+          images={project.image ? [project.image] : []} // Adaptar para a estrutura de imagem em content.js (assumindo uma única imagem)
+          title={project.name} // Usar 'name' para o título
+          description={project.description} // Usar 'description'
+          // content={post.content} // Remover 'content' se não existir em content.js
+          // avatars={project.team?.map((member) => ({ src: member.avatar })) || []} // Remover 'avatars' se não existir em content.js
+          link={project.link || ""} // Usar o link definido em content.js
         />
       ))}
     </Column>
   );
 }
+

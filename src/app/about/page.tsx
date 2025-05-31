@@ -1,3 +1,4 @@
+import React from "react"; // Import React for Fragment
 import {
   Avatar,
   Button,
@@ -54,16 +55,19 @@ export default function About() {
     {
       title: about.work.title,
       display: about.work.display,
+      // Assuming company names are unique enough for this context (TOC)
       items: about.work.experiences.map((experience) => experience.company),
     },
     {
       title: about.studies.title,
       display: about.studies.display,
+      // Assuming institution names are unique enough for this context (TOC)
       items: about.studies.institutions.map((institution) => institution.name),
     },
     {
       title: about.technical.title,
       display: about.technical.display,
+      // Assuming skill titles are unique enough for this context (TOC)
       items: about.technical.skills.map((skill) => skill.title),
     },
   ];
@@ -83,10 +87,10 @@ export default function About() {
             image: `${baseURL}/images/${person.avatar}`,
             sameAs: social
               .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
-              .map((item) => item.link),
+              .map((item) => item.link), // No React key needed inside JSON.stringify
             worksFor: {
               "@type": "Organization",
-              name: about.work.experiences[0].company || "",
+              name: about.work.experiences[0]?.company || "", // Added optional chaining
             },
           }),
         }}
@@ -100,6 +104,7 @@ export default function About() {
           gap="32"
           hide="s"
         >
+          {/* Assuming TableOfContents handles its own keys internally if needed */}
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
@@ -117,12 +122,14 @@ export default function About() {
             <Avatar src={person.avatar} size="xl" />
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
+              {/* Displaying fixed location as requested */}
+              Igaraçu do Tietê - SP
             </Flex>
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
+                {/* Using language string itself as key, assuming they are unique */}
+                {person.languages.map((language) => (
+                  <Tag key={language} size="l">
                     {language}
                   </Tag>
                 ))}
@@ -132,7 +139,7 @@ export default function About() {
         )}
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
           <Column
-            id={about.intro.title}
+            id={about.intro.title} // ID used for navigation, not React key
             fillWidth
             minHeight="160"
             vertical="center"
@@ -175,29 +182,32 @@ export default function About() {
             </Text>
             {social.length > 0 && (
               <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
-                {social.map(
-                  (item) =>
-                    item.link && (
-                        <>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </>
-                    ),
+                {/* Using item.name as key, assuming social media names are unique */}
+                {social.map((item) =>
+                  item.link && (
+                    // Using React.Fragment shorthand with key for the group
+                    <React.Fragment key={item.name}>
+                      <Button
+                        className="s-flex-hide"
+                        // key prop moved to Fragment
+                        href={item.link}
+                        prefixIcon={item.icon}
+                        label={item.name}
+                        size="s"
+                        variant="secondary"
+                        target="_blank" // Added target blank
+                      />
+                      <IconButton
+                        className="s-flex-show"
+                        size="l"
+                        // key prop moved to Fragment
+                        href={item.link}
+                        icon={item.icon}
+                        variant="secondary"
+                        target="_blank" // Added target blank
+                      />
+                    </React.Fragment>
+                  ),
                 )}
               </Flex>
             )}
@@ -215,8 +225,9 @@ export default function About() {
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
+                {/* Using index as part of the key for experiences */}
                 {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
+                  <Column key={`${experience.company}-${index}`} fillWidth>
                     <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
                       <Text id={experience.company} variant="heading-strong-l">
                         {experience.company}
@@ -229,24 +240,26 @@ export default function About() {
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
+                      {/* Using index for achievement keys as content might not be unique string */}
+                      {experience.achievements.map((achievement: JSX.Element, achIndex: number) => (
                         <Text
                           as="li"
                           variant="body-default-m"
-                          key={`${experience.company}-${index}`}
+                          key={`${experience.company}-ach-${achIndex}`}
                         >
                           {achievement}
                         </Text>
                       ))}
                     </Column>
-                    {experience.images.length > 0 && (
+                    {experience.images && experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
+                        {/* Using index for image keys, assuming order is stable */}
+                        {experience.images.map((image, imgIndex) => (
                           <Flex
-                            key={index}
+                            key={`exp-${experience.company}-img-${imgIndex}`}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
+                            //@ts-ignore - Keeping ts-ignore as original
                             minWidth={image.width}
                             //@ts-ignore
                             height={image.height}
@@ -277,6 +290,7 @@ export default function About() {
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
+                {/* Using index for institution keys */}
                 {about.studies.institutions.map((institution, index) => (
                   <Column key={`${institution.name}-${index}`} fillWidth gap="4">
                     <Text id={institution.name} variant="heading-strong-l">
@@ -302,17 +316,19 @@ export default function About() {
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                {/* Using skill.title as key, assuming titles are unique */}
+                {about.technical.skills.map((skill) => (
+                  <Column key={skill.title} fillWidth gap="4">
                     <Text variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                        {/* Using index for skill image keys */}
+                        {skill.images.map((image, imgIndex) => (
                           <Flex
-                            key={index}
+                            key={`skill-${skill.title}-img-${imgIndex}`}
                             border="neutral-medium"
                             radius="m"
                             //@ts-ignore
@@ -344,3 +360,4 @@ export default function About() {
     </Column>
   );
 }
+

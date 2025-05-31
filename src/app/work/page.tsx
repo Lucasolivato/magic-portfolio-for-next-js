@@ -34,7 +34,12 @@ export async function generateMetadata() {
 }
 
 export default function Work() {
-  let allProjects = getPosts(["src", "app", "work", "projects"]);
+  // Note: getPosts reads from MDX files, which are not being used per previous correction.
+  // The Projects component now reads from content.js.
+  // This LD+JSON generation might be inconsistent if it relies on MDX metadata.
+  // For now, we'll keep getPosts here for the LD+JSON schema, but add keys.
+  // A better long-term solution might involve generating LD+JSON from content.js data.
+  let allProjectsFromMdx = getPosts(["src", "app", "work", "projects"]);
 
   return (
     <Column maxWidth="m">
@@ -53,7 +58,9 @@ export default function Work() {
               "@type": "Person",
               name: person.name,
             },
-            hasPart: allProjects.map((project) => ({
+            // Mapping over MDX posts for LD+JSON
+            hasPart: allProjectsFromMdx.map((project) => ({
+              // No React key needed inside JSON.stringify
               "@type": "CreativeWork",
               headline: project.metadata.title,
               description: project.metadata.summary,
@@ -63,7 +70,9 @@ export default function Work() {
           }),
         }}
       />
+      {/* Projects component now reads from content.js */}
       <Projects />
     </Column>
   );
 }
+
