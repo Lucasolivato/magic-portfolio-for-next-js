@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components"; // Removed unused Arrow import
-import { Projects } from "@/components/work/Projects";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components";
+import { Projects } from "@/components/work/Projects"; // Updated path if needed
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
@@ -92,16 +92,16 @@ export default function Home() {
                     size="m"
                   />
                 )}
-                {about.label} {/* Changed from about.title to about.label for consistency */}
+                {about.label}
               </Flex>
             </Button>
           </RevealFx>
         </Column>
       </Column>
 
-      {/* Section: QA Profile Summary & Highlight (New Content) */}
+      {/* Section: QA Profile Summary & Highlight */}
       <RevealFx translateY="16" delay={0.6} fillWidth>
-        <Column gap="m" paddingY="l" paddingX="l"> {/* Added paddingX */}
+        <Column gap="m" paddingY="l" paddingX="l">
           <Heading as="h2" variant="display-strong-xs">
             Perfil e Destaques como QA
           </Heading>
@@ -114,33 +114,30 @@ export default function Home() {
         </Column>
       </RevealFx>
 
-      {/* Section: Projects (Using updated Projects component) */}
-      {/* Removed the first Projects range={[1, 1]} call as it might be redundant now */}
-      {/* If specific project highlights are needed here, adjust the range or logic */}
+      {/* Section: Projects Preview */}
+      <RevealFx translateY="16" delay={0.8} fillWidth>
+         <Column gap="m" paddingY="l" paddingX="l">
+            <Heading as="h2" variant="display-strong-xs">
+                Meus Projetos Recentes
+            </Heading>
+            {/* Call Projects component in summary mode, showing only the first project */}
+            <Projects summaryMode={true} range={[1, 1]} />
+         </Column>
+      </RevealFx>
 
       {/* Section: Blog (Kept as is, check if still relevant) */}
       {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column" paddingY="l"> {/* Added paddingY */}
+        <Flex fillWidth gap="24" mobileDirection="column" paddingY="l">
           <Flex flex={1} paddingLeft="l">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Últimas do Blog {/* Changed title for clarity */}
+              Últimas do Blog
             </Heading>
           </Flex>
-          <Flex flex={3} paddingX="l"> {/* Changed paddingX to 'l' */}
+          <Flex flex={3} paddingX="l">
             <Posts range={[1, 2]} columns="2" />
           </Flex>
         </Flex>
       )}
-
-      {/* Section: More Projects (Using updated Projects component) */}
-      <RevealFx translateY="16" delay={0.8} fillWidth> {/* Added RevealFx wrapper */}
-         <Column gap="m" paddingY="l" paddingX="l"> {/* Added paddingX */}
-            <Heading as="h2" variant="display-strong-xs">
-                Meus Projetos
-            </Heading>
-            <Projects /> {/* Display all projects from content.js */}
-         </Column>
-      </RevealFx>
 
       {/* Section: Newsletter (Kept as is) */}
       {newsletter.display && <Mailchimp newsletter={newsletter} />}

@@ -1,0 +1,163 @@
+.cardContainer {
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: var(--neutral-subtle-hover); /* Use theme variable for hover */
+  }
+}
+
+.mockupContainer {
+  padding: 1rem; /* Add some padding around the mockup */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack mockup and dots vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+/* Basic iPhone Mockup Styling */
+.iphoneMockup {
+  position: relative;
+  width: 280px; /* Adjust width as needed */
+  height: 570px; /* Adjust height based on aspect ratio */
+  background-color: #1c1c1e; /* Dark grey for iPhone body */
+  border-radius: 40px; /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), /* Outer shadow */
+              inset 0 0 0 2px #444; /* Inner bezel subtle line */
+  padding: 15px; /* Padding inside the bezel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Hide anything outside the screen */
+  margin-bottom: var(--static-space-m); /* Space between mockup and navigation */
+}
+
+.iphoneScreen {
+  width: 100%;
+  height: 100%;
+  background-color: #000; /* Screen background */
+  border-radius: 25px; /* Inner screen radius */
+  overflow: hidden; /* Clip the content */
+  display: flex; /* Use flex for the wrapper */
+}
+
+/* Slide Wrapper */
+.slideWrapper {
+  display: flex;
+  width: 100%; /* Takes full width of the screen */
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+}
+
+/* Individual Slide Item */
+.slideItem {
+  flex: 0 0 100%; /* Each item takes full width and doesn't shrink/grow */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure image fits without cropping */
+    display: block;
+  }
+}
+
+
+/* Notch (Optional visual detail) */
+.iphoneMockup::before {
+  content: '';
+  position: absolute;
+  top: 15px; /* Position notch inside padding */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 20px; /* Notch height */
+  background-color: #1c1c1e; /* Match body color */
+  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+  z-index: 2; /* Above the screen */
+}
+
+/* Style for navigation controls container */
+.navigationControls {
+  margin-top: var(--static-space-m); /* Add space above controls */
+  width: 100%; /* Ensure controls span width for better alignment */
+  justify-content: center; /* Center controls */
+}
+
+/* Carousel Dots Styling */
+.carouselDots {
+  /* Uses Flex with gap="s" from component props */
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--neutral-default); /* Inactive dot color */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--neutral-strong); /* Hover color */
+  }
+}
+
+.activeDot {
+  background-color: var(--brand-default); /* Active dot color */
+}
+
+/* Dynamic Description Text */
+.dynamicDescription {
+  min-height: 80px; /* Reserve space to prevent layout shifts */
+  transition: opacity 0.3s ease-in-out; /* Fade transition for text */
+  opacity: 1;
+}
+
+.descriptionFade {
+  opacity: 0;
+}
+
+
+.projectLink {
+  display: inline-block;
+  margin-top: var(--static-space-m); /* Use theme variable for margin */
+  color: var(--brand-strong);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--brand-strong-hover);
+    text-decoration: underline;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .iphoneMockup {
+    width: 220px; /* Smaller mockup on smaller screens */
+    height: 450px;
+    border-radius: 30px;
+    padding: 12px;
+  }
+
+  .iphoneScreen {
+    border-radius: 20px;
+  }
+
+  .iphoneMockup::before {
+    height: 15px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .mockupContainer {
+     margin-bottom: var(--static-space-l); /* Add space below mockup when stacked */
+  }
+
+  .dynamicDescription {
+    min-height: 100px; /* Adjust min-height for smaller screens if needed */
+  }
+}
+

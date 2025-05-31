@@ -177,7 +177,7 @@ const work = {
     {
       name: "PlantãoFarma App (TCC)",
       description: "Co-desenvolvi um aplicativo mobile em React Native, com backend em Node.js e banco de dados MongoDB, para localizar farmácias de plantão próximas. O aplicativo simplifica a busca e integra-se com apps de mapa (Google Maps/Waze) para navegação direta, solucionando uma necessidade local e demonstrando habilidades em desenvolvimento full-stack mobile.", // Descrição atualizada do TCC
-      link: "#", // Link mantido como #
+      link: "https://github.com/Heloisa-Moraes/PlantaoFarma", // Link ATUALIZADO para o GitHub
       image: "/images/projects/plantaofarma_info.jpg", // Imagem ATUALIZADA
     },
     {
