@@ -34,7 +34,8 @@ export async function generateMetadata() {
 }
 
 export default function Contact() { // Renamed component to Contact for clarity
-  const phone = "14-991993618"; // Hardcoded based on CV and content.js description
+  const phone = "14991993618"; // Phone number without formatting for the link
+  const whatsappLink = `https://wa.me/55${phone}`; // WhatsApp link with country code
   const githubLink = "https://github.com/Lucasolivato"; // Corrected GitHub link
 
   return (
@@ -109,11 +110,17 @@ export default function Contact() { // Renamed component to Contact for clarity
             variant="secondary"
             target="_blank"
           />
-        {/* Phone Number - Improved Layout */}
-        <Flex gap="8" vertical="center"> {/* Using Flex for icon and text alignment */}
-          <Icon name="phone" size="m" onBackground="neutral-weak"/>
-          <Text variant="body-strong-m">{phone}</Text>
-        </Flex>
+        {/* WhatsApp Button */}
+        <Button
+            key="WhatsApp"
+            href={whatsappLink}
+            prefixIcon="whatsapp" // Assuming 'whatsapp' icon exists in once-ui
+            label="WhatsApp"
+            size="m"
+            variant="secondary"
+            target="_blank"
+          />
+        {/* Removed the plain text phone display */}
       </Column>
 
       {/* Removed Posts and Mailchimp components */}
