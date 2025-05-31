@@ -51,21 +51,14 @@ const carouselContent = [
 
 export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false); // State to manage fade effect
-  const imageRef = useRef<HTMLDivElement>(null); // Ref for the image container
+  // Removed isFading state and related useEffect for fade effect
+  const imageRef = useRef<HTMLDivElement>(null); // Ref for the slide wrapper
   const descriptionRef = useRef<HTMLDivElement>(null); // Ref for the description text
 
-  // Function to handle changing the image with fade effect
+  // Simplified changeImage function for slide transition
   const changeImage = (newIndex: number) => {
-    if (newIndex === currentImageIndex) return; // Do nothing if index is the same
-
-    setIsFading(true); // Start fade out
-
-    // Wait for fade out to complete, then change image and fade in
-    setTimeout(() => {
-      setCurrentImageIndex(newIndex);
-      setIsFading(false); // Trigger fade in (by removing fade class)
-    }, 300); // Match description fade duration
+    if (newIndex === currentImageIndex) return;
+    setCurrentImageIndex(newIndex);
   };
 
   const nextImage = () => {
@@ -87,16 +80,18 @@ export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) =
   // Get current content based on index
   const currentContent = carouselContent[currentImageIndex];
 
-  // Apply fade-in animation class to image when not fading out
+  // Add a state for description fade effect
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(true);
+
+  // Trigger description fade out/in
   useEffect(() => {
-    if (!isFading && imageRef.current) {
-      // Re-trigger animation by removing and adding the class
-      imageRef.current.classList.remove(styles.imageFadeIn);
-      // Force reflow to restart animation
-      void imageRef.current.offsetWidth;
-      imageRef.current.classList.add(styles.imageFadeIn);
-    }
-  }, [currentImageIndex, isFading]); // Depend on index and fading state
+    setIsDescriptionVisible(false);
+    const timer = setTimeout(() => {
+      setIsDescriptionVisible(true);
+    }, 250); // Half of the slide duration for text to change mid-slide
+    return () => clearTimeout(timer);
+  }, [currentImageIndex]);
+
 
   return (
     <Flex
@@ -111,21 +106,25 @@ export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) =
       <Flex flex={1} horizontal="center" className={styles.mockupContainer}>
         <div className={styles.iphoneMockup}>
           <div className={styles.iphoneScreen}>
-            {/* Slide Wrapper */}
+            {/* Restore Slide Wrapper */}
             <div
-              ref={imageRef} // Use ref on the wrapper for potential animation control
+              ref={imageRef} // Use ref on the wrapper
               className={styles.slideWrapper}
               style={{ transform: `translateX(-${currentImageIndex * 100}%)` }} // Apply transform based on index
             >
               {carouselContent.map((content, index) => (
                 <div key={index} className={styles.slideItem}>
-                  <SmartImage
+                  <img
                     src={content.image}
                     alt={content.altText}
-                    width={250} // Keep original dimensions for aspect ratio
-                    height={541}
-                    radius="m"
-                    priority={index === 0} // Prioritize first image
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      display: "block",
+                    }}
+                    // Add loading="lazy" for non-priority images if needed
+                    loading={index === 0 ? undefined : "lazy"}
                   />
                 </div>
               ))}
@@ -134,8 +133,8 @@ export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) =
         </div>
         {/* Navigation Controls (Dots and Arrows) below mockup */}
         <Flex horizontal="center" vertical="center" gap="m" className={styles.navigationControls}>
-          {/* Text Buttons */}
-          <Button onClick={prevImage} size="s" variant="secondary">Tela Anterior</Button>
+          {/* Text Buttons with Icons */}
+          <Button onClick={prevImage} size="s" variant="tertiary" icon="arrowLeft">Tela Anterior</Button>
           {/* Dot indicators */}
           <Flex horizontal="center" gap="s" className={styles.carouselDots}>
             {carouselContent.map((_, index) => (
@@ -147,7 +146,7 @@ export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) =
               />
             ))}
           </Flex>
-          <Button onClick={nextImage} size="s" variant="secondary">Próxima Tela</Button>
+          <Button onClick={nextImage} size="s" variant="tertiary" arrowIcon>Próxima Tela</Button>
         </Flex>
       </Flex>
 
@@ -155,9 +154,11 @@ export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) =
       <Column flex={2} gap="m">
         <Text variant="heading-strong-l">{project.name}</Text>
         {/* Dynamic Description based on current slide */}
-        <Text variant="body-default-m" onBackground="neutral-weak" className={styles.dynamicDescription}>
-          {currentContent.description}
-        </Text>
+        <div ref={descriptionRef} className={`${styles.dynamicDescription} ${!isDescriptionVisible ? styles.descriptionFade : ''}`}>
+          <Text variant="body-default-m" onBackground="neutral-weak">
+            {currentContent.description}
+          </Text>
+        </div>
         {project.link && project.link !== "#" && (
           <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
             Ver no GitHub

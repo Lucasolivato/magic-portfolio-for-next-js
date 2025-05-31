@@ -38,7 +38,7 @@ export function Projects({ range, summaryMode = false }: ProjectsProps) {
               priority={index < 2}
               key={project.name}
               href={project.link || "#"}
-              images={project.name === "Automação de Pedidos com Robot Framework" ? ["/images/projects/robot_framework_automation.png"] : (project.image ? [project.image] : [])}
+              images={project.name === "Automação de Pedidos (Tecnologia Única)" ? ["/images/projects/robot_framework_automation.png"] : (project.image ? [project.image] : [])}
               title={project.name}
               description={description} // Use truncated or full description
               link={project.link || ""}

@@ -161,3 +161,17 @@
   }
 }
 
+
+
+/* Improved Button Styles */
+.navigationControls button {
+  /* Use Button component styles, but can override or add specifics */
+  /* Example: Add a subtle border or change background on hover */
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.navigationControls button:hover {
+  background-color: var(--brand-subtle-hover); /* Example hover effect */
+  border-color: var(--brand-default);
+}
+
