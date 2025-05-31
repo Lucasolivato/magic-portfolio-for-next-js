@@ -134,7 +134,7 @@ export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) =
         {/* Navigation Controls (Dots and Arrows) below mockup */}
         <Flex horizontal="center" vertical="center" gap="m" className={styles.navigationControls}>
           {/* Text Buttons with Icons */}
-          <Button onClick={prevImage} size="s" variant="tertiary" icon="arrowLeft">Tela Anterior</Button>
+          <Button onClick={prevImage} size="s" variant="tertiary">Tela Anterior</Button>
           {/* Dot indicators */}
           <Flex horizontal="center" gap="s" className={styles.carouselDots}>
             {carouselContent.map((_, index) => (
