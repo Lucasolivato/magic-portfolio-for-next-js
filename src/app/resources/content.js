@@ -1,70 +1,56 @@
 import { InlineCode } from "@/once-ui/components";
 
+// Informações Pessoais (Atualizadas com base no CV e conversa)
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Lucas",
+  lastName: "Santos Olivato", // Nome completo atualizado
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Analista de Qualidade (QA)", // Cargo atualizado
+  avatar: "/images/avatar.jpg", // Manter avatar padrão
+  location: "America/Sao_Paulo", // Localização atualizada
+  languages: ["Português Nativo", "Inglês (Técnico)"], // Idiomas atualizados
 };
 
 const newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
-    </>
-  ),
+  display: false, // Mantido como false
 };
 
+// Redes Sociais e Contatos (Atualizados - GitHub removido, mantendo nomes internos)
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
+  // GitHub removido conforme solicitado
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
-  },
-  {
-    name: "LinkedIn",
+    name: "LinkedIn", // Nome interno mantido
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/lucas-olivato/",
   },
   {
-    name: "X",
-    icon: "x",
-    link: "",
-  },
-  {
-    name: "Email",
+    name: "Email", // Nome interno mantido
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:lucasolivato@gmail.com",
   },
 ];
 
+// Página Home (Atualizada)
 const home = {
-  label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  label: "Home", // Label mantido
+  title: `Portfólio de ${person.name}`, // Título atualizado
+  description: `Portfólio profissional destacando experiência como ${person.role}. Conheça meus projetos, habilidades e trajetória na área de QA.`, // Descrição atualizada
+  headline: <>Analista de Qualidade | Automação de Testes | SAP QA</>, // Headline atualizada
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Olá! Sou Lucas, Analista de QA dedicado à garantia da qualidade de software, com foco em automação de testes e experiência em ambientes SAP.
+      <br /> Explore meu portfólio para conhecer meus projetos e habilidades.
     </>
-  ),
+  ), // Subline atualizado
 };
 
+// Página Sobre (Atualizada com base no CV e conversa)
 const about = {
-  label: "About",
-  title: "About me",
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  label: "Sobre", // Label mantido
+  title: "Sobre Mim", // Título atualizado
+  description: `Conheça ${person.name}, ${person.role} apaixonado por tecnologia e qualidade.`, // Descrição atualizada
   tableOfContent: {
     display: true,
     subItems: false,
@@ -73,136 +59,138 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "Introdução", // Título mantido
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Sou um profissional de tecnologia dedicado e proativo, com sólida formação em Gestão de TI e Desenvolvimento de Sistemas, e experiência prática como Analista de Qualidade.
+        Minha paixão é garantir a robustez e a eficiência de softwares através de testes manuais e automatizados, aplicando boas práticas como TDD/BDD em ambientes ágeis.
+        <br /> Tenho um forte compromisso em aprimorar constantemente minhas habilidades, buscando novas tecnologias e metodologias que agreguem valor. Sou comunicativo, valorizo o trabalho em equipe e tenho facilidade para aprender e resolver problemas.
       </>
-    ),
+    ), // Descrição atualizada
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+    display: true,
+    title: "Experiência Profissional", // Título mantido
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Tecnologia Única",
+        timeframe: "2023 - 2025 (1 ano e 3 meses)",
+        role: "Analista de Garantia de Qualidade JR",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Automação de testes funcionais e de API (Robot Framework, Selenium, Postman, Python) para sistemas críticos, validação de regras de negócio e fluxos de pedidos.</>,
+          <>Execução e análise de testes de carga e performance para garantir escalabilidade e estabilidade das soluções.</>,
+          <>Experiência em garantia de qualidade para SAP, incluindo análise de dados, automação de validações com SQL e colaboração na implementação de regras fiscais e integrações.</>,
+          <>Aplicação de práticas ágeis (TDD/BDD) e colaboração em pipelines de CI/CD.</>,
+          <>Elaboração de casos de teste, planos de teste e documentação técnica.</>,
+          <>**Conquista:** Implementei automação de criação de pedidos via UI com Robot Framework para superar a limitação de acesso à API e a lentidão do processo manual. O script gerou com sucesso aproximadamente 600 pedidos ao longo de 10 horas de execução contínua, viabilizando testes de carga essenciais para um novo microsserviço de logística e otimizando significativamente o tempo da equipe.</> // Conquista adicionada aqui
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Zella Sistemas",
+        timeframe: "2019 - 2020 (1 ano)",
+        role: "Assistente Técnico Eletrônico",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Suporte técnico e manutenção de sistemas e equipamentos eletrônicos.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "L&L Tecnologia",
+        timeframe: "2010 - 2018",
+        role: "Instalador e Técnico de Sistemas de Energia Solar",
+        achievements: [
+          <>Planejamento de projetos, instalação e manutenção de sistemas de energia solar.</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Formação Acadêmica", // Título atualizado
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Etec Comendador João Rays",
+        description: <>Técnico em Desenvolvimento de Sistemas - 2024</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Fatec Jaú",
+        description: <>Bacharelado em Gestão de Tecnologia da Informação - 2022</>,
+      },
+      {
+        name: "Etec Comendador João Rays",
+        description: <>Técnico em Informática – 2013</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Habilidades Técnicas", // Título mantido
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Automação de Testes",
+        description: <>Robot Framework, Selenium WebDriver, Cypress, Postman, Python (Test Scripts), Flask.</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Tipos de Teste",
+        description: <>Manuais, Funcionais, API, Performance (Carga/Stress), Regressão, BDD/TDD.</>,
+        images: [],
+      },
+      {
+        title: "Tecnologias",
+        description: <>SQL (SQL Server, SAP HANA), SAP B1, Git, CI/CD (Conceitos), Docker/K8s (Conceitos), AWS/GCP/Azure (Conceitos).</>,
+        images: [],
+      },
+      {
+        title: "Linguagens",
+        description: <>Python, JavaScript, HTML/CSS.</>,
+        images: [],
+      },
+      {
+        title: "Metodologias Ágeis",
+        description: <>Scrum, Kanban.</>,
+        images: [],
       },
     ],
   },
 };
 
+// Página Contato (Mantendo nome interno 'blog', mas atualizando conteúdo visível)
 const blog = {
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  label: "Contato", // Label atualizado para Contato
+  title: "Entre em Contato", // Título atualizado
+  description: `Fale com ${person.name}. Envie uma mensagem ou conecte-se através dos canais abaixo. Telefone: 14-991993618`, // Descrição atualizada + Telefone
 };
 
+// Página Projetos (Mantendo nome interno 'work', mas atualizando conteúdo visível e imagens)
 const work = {
-  label: "Work",
-  title: "My projects",
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  label: "Projetos", // Label atualizado
+  title: "Meus Projetos", // Título atualizado
+  description: `Conheça alguns projetos desenvolvidos por ${person.name}.`, // Descrição atualizada
+  projects: [
+    {
+      name: "PlantãoFarma App (TCC)",
+      description: "Co-desenvolvi um aplicativo mobile em React Native, com backend em Node.js e banco de dados MongoDB, para localizar farmácias de plantão próximas. O aplicativo simplifica a busca e integra-se com apps de mapa (Google Maps/Waze) para navegação direta, solucionando uma necessidade local e demonstrando habilidades em desenvolvimento full-stack mobile.", // Descrição atualizada do TCC
+      link: "#", // Link mantido como #
+      image: "/images/projects/plantaofarma_info.jpg", // Imagem ATUALIZADA
+    },
+    {
+      name: "Automação de Pedidos (Tecnologia Única)",
+      description: "Script de automação (Robot Framework) para criação de pedidos via UI, gerando ~600 pedidos em 10h para viabilizar testes de carga de um novo microsserviço de logística e otimizar o tempo da equipe.", // Descrição da conquista do CV
+      link: "#", // Sem link aplicável
+      image: "/images/projects/plantaofarma_icon.png", // Imagem ATUALIZADA (usando o ícone como placeholder)
+    },
+    // Adicionar outros projetos se houver
+  ],
 };
 
+// Página Galeria (Mantida como no original para evitar alterações internas)
 const gallery = {
   label: "Gallery",
   title: "My photo gallery",
@@ -212,74 +200,76 @@ const gallery = {
     {
       src: "/images/gallery/img-01.jpg",
       alt: "image",
-      orientation: "vertical",
+      orientation: "portrait", // Corrigido para portrait conforme imagem
     },
     {
       src: "/images/gallery/img-02.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-03.jpg",
       alt: "image",
-      orientation: "vertical",
+      orientation: "portrait", // Corrigido para portrait conforme imagem
     },
     {
       src: "/images/gallery/img-04.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-05.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-06.jpg",
       alt: "image",
-      orientation: "vertical",
+      orientation: "portrait", // Corrigido para portrait conforme imagem
     },
     {
       src: "/images/gallery/img-07.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-08.jpg",
       alt: "image",
-      orientation: "vertical",
+      orientation: "portrait", // Corrigido para portrait conforme imagem
     },
     {
       src: "/images/gallery/img-09.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-10.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-11.jpg",
       alt: "image",
-      orientation: "vertical",
+      orientation: "portrait", // Corrigido para portrait conforme imagem
     },
     {
       src: "/images/gallery/img-12.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-13.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
     {
       src: "/images/gallery/img-14.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "landscape", // Corrigido para landscape conforme imagem
     },
   ],
 };
 
+// Exportações mantidas como no original
 export { person, social, newsletter, home, about, blog, work, gallery };
+
