@@ -77,9 +77,9 @@ export default function Contact() { // Renamed component to Contact for clarity
           item.link && (
             // Using React.Fragment with key for the group of Button/IconButton
             <React.Fragment key={item.name}>
+              {/* Button component seems to accept 'label', keeping it here */}
               <Button
                 className="s-flex-hide"
-                // key prop moved to Fragment
                 href={item.link}
                 prefixIcon={item.icon}
                 label={item.name}
@@ -87,12 +87,12 @@ export default function Contact() { // Renamed component to Contact for clarity
                 variant="secondary"
                 target="_blank"
               />
+              {/* IconButton does not accept 'label', using 'tooltip' instead for accessibility */}
               <IconButton
                 className="s-flex-show"
-                // key prop moved to Fragment
                 href={item.link}
                 icon={item.icon}
-                label={item.name} // Added label for accessibility
+                tooltip={item.name} // Changed 'label' to 'tooltip'
                 size="l"
                 variant="secondary"
                 target="_blank"
@@ -100,7 +100,7 @@ export default function Contact() { // Renamed component to Contact for clarity
             </React.Fragment>
           ),
         )}
-        {/* GitHub Link */}
+        {/* GitHub Link - Assuming Button accepts label */}
          <Button
             key="GitHub"
             href={githubLink}
@@ -110,7 +110,7 @@ export default function Contact() { // Renamed component to Contact for clarity
             variant="secondary"
             target="_blank"
           />
-        {/* WhatsApp Button */}
+        {/* WhatsApp Button - Assuming Button accepts label */}
         <Button
             key="WhatsApp"
             href={whatsappLink}

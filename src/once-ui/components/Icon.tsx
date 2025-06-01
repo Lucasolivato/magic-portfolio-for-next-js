@@ -33,8 +33,26 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
     },
     ref,
   ) => {
+    // Hooks moved to the top level before any conditional returns
+    const [isTooltipVisible, setTooltipVisible] = useState(false);
+    const [isHover, setIsHover] = useState(false);
+
+    useEffect(() => {
+      let timer: NodeJS.Timeout;
+      if (isHover) {
+        timer = setTimeout(() => {
+          setTooltipVisible(true);
+        }, 400);
+      } else {
+        setTooltipVisible(false);
+      }
+
+      return () => clearTimeout(timer);
+    }, [isHover]);
+
     const IconComponent: IconType | undefined = iconLibrary[name];
 
+    // Early return check after hooks
     if (!IconComponent) {
       console.warn(`Icon "${name}" does not exist in the library.`);
       return null;
@@ -55,22 +73,6 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
       const [scheme, weight] = onSolid.split("-") as [ColorScheme, ColorWeight];
       colorClass = `${scheme}-on-solid-${weight}`;
     }
-
-    const [isTooltipVisible, setTooltipVisible] = useState(false);
-    const [isHover, setIsHover] = useState(false);
-
-    useEffect(() => {
-      let timer: NodeJS.Timeout;
-      if (isHover) {
-        timer = setTimeout(() => {
-          setTooltipVisible(true);
-        }, 400);
-      } else {
-        setTooltipVisible(false);
-      }
-
-      return () => clearTimeout(timer);
-    }, [isHover]);
 
     return (
       <Flex
@@ -101,3 +103,4 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
 Icon.displayName = "Icon";
 
 export { Icon };
+

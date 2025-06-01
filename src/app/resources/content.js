@@ -13,8 +13,11 @@ const person = {
   languages: ["Português Nativo", "Inglês (Técnico)"], // Idiomas atualizados
 };
 
+// Newsletter object updated to include title and description
 const newsletter = {
   display: false, // Mantido como false
+  title: "Assine a Newsletter", // Added placeholder title
+  description: "Receba atualizações sobre meus projetos e artigos.", // Added placeholder description
 };
 
 // Redes Sociais e Contatos (Atualizados - GitHub removido, mantendo nomes internos)

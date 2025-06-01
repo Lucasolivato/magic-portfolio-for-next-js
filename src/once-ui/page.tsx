@@ -82,7 +82,7 @@ export default function Contact() { // Renamed component to Contact for clarity
                 // key prop moved to Fragment
                 href={item.link}
                 prefixIcon={item.icon}
-                label={item.name}
+                label={item.name} // Button accepts label
                 size="m"
                 variant="secondary"
                 target="_blank"
@@ -92,7 +92,7 @@ export default function Contact() { // Renamed component to Contact for clarity
                 // key prop moved to Fragment
                 href={item.link}
                 icon={item.icon}
-                label={item.name} // Added label for accessibility
+                tooltip={item.name} // Changed label to tooltip
                 size="l"
                 variant="secondary"
                 target="_blank"

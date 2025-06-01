@@ -33,6 +33,7 @@ export function Projects({ range, summaryMode = false }: ProjectsProps) {
           // Pass the potentially truncated description to PlantaoFarmaCard
           return <PlantaoFarmaCard key={project.name} project={{ ...project, description }} />;
         } else {
+          // Added default values for content and avatars to satisfy ProjectCardProps
           return (
             <ProjectCard
               priority={index < 2}
@@ -42,7 +43,8 @@ export function Projects({ range, summaryMode = false }: ProjectsProps) {
               title={project.name}
               description={description} // Use truncated or full description
               link={project.link || ""}
-              hideDetails={summaryMode} // Add prop to potentially hide more details in ProjectCard if needed
+              content="" // Added default empty string for content
+              avatars={[]} // Added default empty array for avatars
             />
           );
         }

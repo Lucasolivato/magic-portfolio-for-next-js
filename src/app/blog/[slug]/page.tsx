@@ -7,11 +7,7 @@ import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
 
-interface BlogParams {
-  params: {
-    slug: string;
-  };
-}
+// Removed the PageProps interface definition
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "blog", "posts"]);
@@ -20,22 +16,21 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-export function generateMetadata({ params: { slug } }: BlogParams) {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slug);
+// Use inline type for params in generateMetadata
+// Removed @ts-expect-error as downgrade resolved the issue
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const { slug } = params;
 
-  if (!post) {
-    return;
-  }
+  const posts = getPosts(["src", "app", "blog", "posts"]);
+  const post = posts.find((post) => post.slug === slug);
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    images,
-    image,
-    team,
-  } = post.metadata;
-  let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
+  if (!post) return;
+
+  const { title, publishedAt: publishedTime, summary: description, image } = post.metadata;
+
+  const ogImage = image
+    ? `https://${baseURL}${image}`
+    : `https://${baseURL}/og?title=${title}`;
 
   return {
     title,
@@ -45,12 +40,8 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
       description,
       type: "article",
       publishedTime,
-      url: `https://${baseURL}/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      url: `https://${baseURL}/blog/${slug}`,
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: "summary_large_image",
@@ -61,12 +52,15 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
   };
 }
 
-export default function Blog({ params }: BlogParams) {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === params.slug);
+// Use inline type for params in the default export Blog component
+// Removed @ts-expect-error as downgrade resolved the issue
+export default async function Blog({ params }: { params: { slug: string } }) {
+  const { slug } = params;
 
-  if (!post) {
-    notFound();
-  }
+  const posts = getPosts(["src", "app", "blog", "posts"]);
+  const post = posts.find((post) => post.slug === slug);
+
+  if (!post) notFound();
 
   const avatars =
     post.metadata.team?.map((person) => ({
@@ -114,3 +108,4 @@ export default function Blog({ params }: BlogParams) {
     </Column>
   );
 }
+
