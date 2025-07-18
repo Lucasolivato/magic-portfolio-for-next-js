@@ -63,8 +63,8 @@ export default function Home() {
         }}
       />
       {/* Section: Hero */}
-      <Column fillWidth paddingY="l" gap="m">
-        <Column maxWidth="s">
+      <Column fillWidth paddingY="l" gap="m" horizontal="center">
+        <Column maxWidth="m" paddingX="l">
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
             <Heading wrap="balance" variant="display-strong-l">
               {home.headline}
@@ -101,7 +101,7 @@ export default function Home() {
 
       {/* Section: QA Profile Summary & Highlight */}
       <RevealFx translateY="16" delay={0.6} fillWidth>
-        <Column gap="m" paddingY="l" paddingX="l">
+        <Column maxWidth="m" gap="m" paddingY="l" paddingX="l">
           <Heading as="h2" variant="display-strong-xs">
             Perfil e Destaques como QA
           </Heading>
@@ -116,7 +116,7 @@ export default function Home() {
 
       {/* Section: Projects Preview */}
       <RevealFx translateY="16" delay={0.8} fillWidth>
-         <Column gap="m" paddingY="l" paddingX="l">
+         <Column maxWidth="m" gap="m" paddingY="l" paddingX="l">
             <Heading as="h2" variant="display-strong-xs">
                 Meus Projetos Recentes
             </Heading>
@@ -125,19 +125,7 @@ export default function Home() {
          </Column>
       </RevealFx>
 
-      {/* Section: Blog (Kept as is, check if still relevant) */}
-      {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column" paddingY="l">
-          <Flex flex={1} paddingLeft="l">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Últimas do Blog
-            </Heading>
-          </Flex>
-          <Flex flex={3} paddingX="l">
-            <Posts range={[1, 2]} columns="2" />
-          </Flex>
-        </Flex>
-      )}
+      {/* Seção de Blog removida */}
 
       {/* Section: Newsletter (Kept as is) */}
       {newsletter.display && <Mailchimp newsletter={newsletter} />}

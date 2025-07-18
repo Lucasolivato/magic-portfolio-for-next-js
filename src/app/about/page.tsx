@@ -7,6 +7,7 @@ import {
   Heading,
   Icon,
   IconButton,
+  RevealFx,
   SmartImage,
   Tag,
   Text,
@@ -108,18 +109,19 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Flex fillWidth mobileDirection="column" horizontal="center">
-        {about.avatar.display && (
-          <Column
-            className={styles.avatar}
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
-            gap="m"
-            flex={3}
-            horizontal="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
+      <RevealFx translateY="4" fillWidth>
+        <Flex fillWidth mobileDirection="column" horizontal="center">
+          {about.avatar.display && (
+            <Column
+              className={styles.avatar}
+              minWidth="160"
+              paddingX="l"
+              paddingBottom="xl"
+              gap="m"
+              flex={3}
+              horizontal="center"
+            >
+              <Avatar src={person.avatar} size="xl" />
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
               {/* Displaying fixed location as requested */}
@@ -355,8 +357,9 @@ export default function About() {
               </Column>
             </>
           )}
-        </Column>
-      </Flex>
+          </Column>
+        </Flex>
+      </RevealFx>
     </Column>
   );
 }

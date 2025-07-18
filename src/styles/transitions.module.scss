@@ -1,0 +1,36 @@
+/* Estilos para transições entre páginas */
+.pageTransition {
+  position: relative;
+  width: 100%;
+  
+  &Enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  &EnterActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  }
+  
+  &Exit {
+    opacity: 1;
+  }
+  
+  &ExitActive {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 300ms ease-in, transform 300ms ease-in;
+  }
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+  .pageTransition {
+    &Enter, &ExitActive {
+      transform: translateY(5px); /* Movimento mais sutil em telas menores */
+    }
+  }
+}
+
