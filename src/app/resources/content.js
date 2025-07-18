@@ -43,8 +43,10 @@ const home = {
   headline: <>Analista de Qualidade | Automação de Testes | SAP QA</>, // Headline atualizada
   subline: (
     <>
-      Olá! Sou Lucas, Analista de QA dedicado à garantia da qualidade de software, com foco em automação de testes e experiência em ambientes SAP.
-      <br /> Explore meu portfólio para conhecer meus projetos e habilidades.
+      Olá, sou Lucas — Analista de Qualidade de Software.<br />
+      Atuo garantindo a excelência de produtos digitais por meio de testes manuais e automatizados, sempre com foco na entrega de valor, estabilidade e experiência do usuário.<br />
+      Tenho experiência em ambientes diversos, como SAP e APIs, e estou em constante evolução técnica e profissional.<br /><br />
+      Fique à vontade para explorar meus projetos e conhecer mais sobre minha trajetória!
     </>
   ), // Subline atualizado
 };
@@ -69,9 +71,10 @@ const about = {
     title: "Introdução", // Título mantido
     description: (
       <>
-        Sou um profissional de tecnologia dedicado e proativo, com sólida formação em Gestão de TI e Desenvolvimento de Sistemas, e experiência prática como Analista de Qualidade.
-        Minha paixão é garantir a robustez e a eficiência de softwares através de testes manuais e automatizados, aplicando boas práticas como TDD/BDD em ambientes ágeis.
-        <br /> Tenho um forte compromisso em aprimorar constantemente minhas habilidades, buscando novas tecnologias e metodologias que agreguem valor. Sou comunicativo, valorizo o trabalho em equipe e tenho facilidade para aprender e resolver problemas.
+        Profissional de Qualidade de Software com sólida atuação em testes manuais e automação, aplicando metodologias ágeis em times multidisciplinares.<br />
+        Atuo com foco em qualidade desde o planejamento até a entrega, garantindo eficiência e confiabilidade nos sistemas.<br />
+        Possuo conhecimentos consolidados em ferramentas como Postman, Robot Framework, Cypress e práticas de CI/CD.<br />
+        Tenho facilidade em transitar entre áreas técnicas e de negócio, sempre buscando evoluir soluções e entregar valor real ao produto.
       </>
     ), // Descrição atualizada
   },
@@ -80,8 +83,22 @@ const about = {
     title: "Experiência Profissional", // Título mantido
     experiences: [
       {
+        company: "NuageIT",
+        timeframe: "2025 - Atual",
+        role: "Analista de Qualidade de Software",
+        achievements: [
+          <>Implementação de estratégias de teste para aplicações web e APIs, utilizando Cypress, Playwright e Postman para automação de testes.</>,
+          <>Desenvolvimento de frameworks de teste escaláveis com integração contínua via GitHub Actions e Jenkins, garantindo qualidade em ambientes de entrega contínua.</>,
+          <>Elaboração de GMUDs (Guias de Mudança) e Handovers detalhados para implantações em produção, garantindo transições seguras e rastreabilidade das alterações.</>,
+          <>Colaboração direta com desenvolvedores e product owners para implementar práticas de Shift-Left Testing e BDD, melhorando a qualidade desde as fases iniciais do desenvolvimento.</>,
+          <>Criação e manutenção de documentação técnica de testes e gerenciamento de casos de teste no ClickUp, centralizando todo o fluxo de trabalho da equipe.</>,
+          <>Participação ativa em cerimônias ágeis e reuniões de planejamento, contribuindo com perspectivas de qualidade para decisões de produto.</>,
+        ],
+        images: [],
+      },
+      {
         company: "Tecnologia Única",
-        timeframe: "2023 - 2025 (1 ano e 3 meses)",
+        timeframe: "2023 - 2025 (1 ano e 6 meses)",
         role: "Analista de Garantia de Qualidade JR",
         achievements: [
           <>Automação de testes funcionais e de API (Robot Framework, Selenium, Postman, Python) para sistemas críticos, validação de regras de negócio e fluxos de pedidos.</>,
@@ -89,7 +106,7 @@ const about = {
           <>Experiência em garantia de qualidade para SAP, incluindo análise de dados, automação de validações com SQL e colaboração na implementação de regras fiscais e integrações.</>,
           <>Aplicação de práticas ágeis (TDD/BDD) e colaboração em pipelines de CI/CD.</>,
           <>Elaboração de casos de teste, planos de teste e documentação técnica.</>,
-          <>**Conquista:** Implementei automação de criação de pedidos via UI com Robot Framework para superar a limitação de acesso à API e a lentidão do processo manual. O script gerou com sucesso aproximadamente 600 pedidos ao longo de 10 horas de execução contínua, viabilizando testes de carga essenciais para um novo microsserviço de logística e otimizando significativamente o tempo da equipe.</> // Conquista adicionada aqui
+          <>**Conquista:** Implementei automação de criação de pedidos via UI com Robot Framework para superar a limitação de acesso à API e a lentidão do processo manual. O script gerou com sucesso aproximadamente 600 pedidos ao longo de 10 horas de execução contínua, viabilizando testes de carga essenciais para um novo microsserviço de logística e otimizando significativamente o tempo da equipe.</>
         ],
         images: [],
       },
@@ -137,27 +154,37 @@ const about = {
     skills: [
       {
         title: "Automação de Testes",
-        description: <>Robot Framework, Selenium WebDriver, Cypress, Postman, Python (Test Scripts), Flask.</>,
+        description: <>Robot Framework, Selenium WebDriver, Cypress, Playwright, Postman/Newman, Python (PyTest), JUnit, TestNG, RestAssured.</>,
         images: [],
       },
       {
         title: "Tipos de Teste",
-        description: <>Manuais, Funcionais, API, Performance (Carga/Stress), Regressão, BDD/TDD.</>,
+        description: <>Funcionais, Integração, API, UI, Performance (Carga/Stress), Regressão, Exploração, Segurança Básica, Usabilidade, BDD/TDD.</>,
+        images: [],
+      },
+      {
+        title: "Ferramentas e Plataformas",
+        description: <>JIRA, Azure DevOps, ClickUp, Swagger, Grafana, Jenkins, GitHub Actions, SonarQube, Notion.</>,
         images: [],
       },
       {
         title: "Tecnologias",
-        description: <>SQL (SQL Server, SAP HANA), SAP B1, Git, CI/CD (Conceitos), Docker/K8s (Conceitos), AWS/GCP/Azure (Conceitos).</>,
+        description: <>SQL (SQL Server, SAP HANA, MySQL), SAP B1, Git, CI/CD, Docker, AWS/GCP/Azure (Serviços Básicos), APIs REST/SOAP.</>,
         images: [],
       },
       {
         title: "Linguagens",
-        description: <>Python, JavaScript, HTML/CSS.</>,
+        description: <>Python, JavaScript, Java (Básico), HTML/CSS, SQL, Gherkin (Cucumber).</>,
         images: [],
       },
       {
         title: "Metodologias Ágeis",
-        description: <>Scrum, Kanban.</>,
+        description: <>Scrum, Kanban, SAFe (Básico), DevOps, Shift-Left Testing.</>,
+        images: [],
+      },
+      {
+        title: "Habilidades Complementares",
+        description: <>Documentação Técnica, GMUDs, Handovers, Relatórios de Teste, Comunicação com Stakeholders, Mentoria de Testes, Identificação e Relato de Bugs.</>,
         images: [],
       },
     ],
