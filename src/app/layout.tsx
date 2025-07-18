@@ -1,5 +1,6 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
+import "@/app/favicon.css";
 
 import classNames from "classnames";
 
@@ -17,6 +18,11 @@ export async function generateMetadata() {
     metadataBase: new URL(`https://${baseURL}`),
     title: home.title,
     description: home.description,
+    icons: {
+      icon: '/ladybug_favicon_detailed.svg',
+      shortcut: '/ladybug_favicon_detailed.svg',
+      apple: '/ladybug_favicon_detailed.svg',
+    },
     openGraph: {
       title: `${person.firstName}'s Portfolio`,
       description: "Portfolio website showcasing my work.",

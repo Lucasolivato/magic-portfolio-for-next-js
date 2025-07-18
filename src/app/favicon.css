@@ -1,0 +1,4 @@
+/* Estilo para remover o fundo branco do favicon */
+link[rel="icon"] {
+  background-color: transparent;
+}
