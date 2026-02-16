@@ -91,80 +91,49 @@ export const Header = () => {
               )}
               <Line vert maxHeight="24" />
               {routes["/about"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="person"
-                    href="/about"
-                    label={about.label}
-                    selected={pathname === "/about"}
-                    aria-label={about.label}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="person"
-                    href="/about"
-                    selected={pathname === "/about"}
-                    aria-label={about.label}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="person"
+                  href="/about"
+                  label={about.label}
+                  selected={pathname === "/about"}
+                  aria-label={about.label}
+                />
               )}
               {routes["/work"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="grid"
-                    href="/work"
-                    label={work.label}
-                    selected={pathname.startsWith("/work")}
-                    aria-label={work.label}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="grid"
-                    href="/work"
-                    selected={pathname.startsWith("/work")}
-                    aria-label={work.label}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="grid"
+                  href="/work"
+                  label={work.label}
+                  selected={pathname.startsWith("/work")}
+                  aria-label={work.label}
+                />
+              )}
+              {routes["/contact"] && (
+                <ToggleButton
+                  prefixIcon="email"
+                  href="/contact"
+                  label="Contato"
+                  selected={pathname === "/contact"}
+                  aria-label="Contato"
+                />
               )}
               {routes["/blog"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="book"
-                    href="/blog"
-                    label={blog.label}
-                    selected={pathname.startsWith("/blog")}
-                    aria-label={blog.label}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="book"
-                    href="/blog"
-                    selected={pathname.startsWith("/blog")}
-                    aria-label={blog.label}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="book"
+                  href="/blog"
+                  label={blog.label}
+                  selected={pathname.startsWith("/blog")}
+                  aria-label={blog.label}
+                />
               )}
               {routes["/gallery"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    label={gallery.label}
-                    selected={pathname.startsWith("/gallery")}
-                    aria-label={gallery.label}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    selected={pathname.startsWith("/gallery")}
-                    aria-label={gallery.label}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="gallery"
+                  href="/gallery"
+                  label={gallery.label}
+                  selected={pathname.startsWith("/gallery")}
+                  aria-label={gallery.label}
+                />
               )}
             </Flex>
           </Flex>
