@@ -122,7 +122,7 @@ export default function About() {
               horizontal="center"
             >
               <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center" style={{ whiteSpace: "nowrap" }}>
+            <Flex gap="8" vertical="center" className={styles.responsiveNowrap}>
               <Icon onBackground="accent-weak" name="globe" />
               {/* Displaying fixed location as requested */}
               Igaraçu do Tietê - SP
@@ -168,7 +168,7 @@ export default function About() {
             marginBottom="32"
           >
 
-            <Heading className={styles.textAlign} variant="display-strong-xl" style={{ whiteSpace: "nowrap" }}>
+            <Heading className={`${styles.textAlign} ${styles.responsiveNowrap}`} variant="display-strong-xl">
               {person.name}
             </Heading>
             <Text
