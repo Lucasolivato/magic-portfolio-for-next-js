@@ -1,7 +1,9 @@
 import { work } from "@/app/resources/content";
-import { Column, Button } from "@/once-ui/components"; // Added Button import
+import { Column, Button } from "@/once-ui/components";
 import { ProjectCard } from "@/components";
 import { PlantaoFarmaCard } from "./PlantaoFarmaCard";
+import { PortfolioAutomationCard } from "./PortfolioAutomationCard";
+import { RobotFrameworkCard } from "./RobotFrameworkCard";
 
 interface ProjectsProps {
   range?: [number, number?];
@@ -23,7 +25,7 @@ export function Projects({ range, summaryMode = false }: ProjectsProps) {
   const projectsToDisplay = summaryMode ? allProjects.slice(0, range ? range[1] ?? 1 : 1) : (range ? allProjects.slice(range[0] - 1, range[1] ?? allProjects.length) : allProjects);
 
   return (
-    <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
+    <Column fillWidth gap="l" marginBottom="40" paddingX="l">
       {projectsToDisplay.map((project, index) => {
         const description = summaryMode
           ? truncateDescription(project.description, 120) // Truncate description in summary mode
@@ -32,6 +34,10 @@ export function Projects({ range, summaryMode = false }: ProjectsProps) {
         if (project.name === "PlantãoFarma App (TCC)") {
           // Pass the potentially truncated description to PlantaoFarmaCard
           return <PlantaoFarmaCard key={project.name} project={{ ...project, description }} />;
+        } else if (project.name === "Portfólio Automation") {
+          return <PortfolioAutomationCard key={project.name} project={{ ...project, description }} />;
+        } else if (project.name === "Automação de Pedidos (Tecnologia Única)") {
+           return <RobotFrameworkCard key={project.name} project={{ ...project, description }} />;
         } else {
           // Added default values for content and avatars to satisfy ProjectCardProps
           return (
@@ -39,12 +45,13 @@ export function Projects({ range, summaryMode = false }: ProjectsProps) {
               priority={index < 2}
               key={project.name}
               href={project.link || "#"}
-              images={project.name === "Automação de Pedidos (Tecnologia Única)" ? ["/images/projects/robot_framework_automation.png"] : (project.image ? [project.image] : [])}
+              images={project.image ? [project.image] : []}
               title={project.name}
               description={description} // Use truncated or full description
               link={project.link || ""}
               content="" // Added default empty string for content
               avatars={[]} // Added default empty array for avatars
+              objectFit="contain" // Reverting to default cover since specific cards handle their own
             />
           );
         }

@@ -33,13 +33,13 @@ export async function generateMetadata() {
 
 export default function Contact() {
   return (
-    <Column maxWidth="m">
-      <Heading variant="display-strong-s" marginBottom="m">
-        Contact
+    <Column maxWidth="m" horizontal="center" fillWidth>
+      <Heading variant="display-strong-s" marginBottom="m" align="center">
+        Contato
       </Heading>
-      <Column fillWidth gap="l">
-        <Text variant="body-default-l">
-          Feel free to reach out to me for collaborations or just to say hi!
+      <Column fillWidth gap="l" horizontal="center">
+        <Text variant="body-default-l" align="center">
+          Sinta-se à vontade para entrar em contato para colaborações ou apenas para dizer oi!
         </Text>
         <Flex gap="16" wrap>
           {social.map((item) => (

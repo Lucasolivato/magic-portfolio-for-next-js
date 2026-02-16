@@ -1,4 +1,4 @@
-import { InlineCode } from "@/once-ui/components";
+import { InlineCode, Button } from "@/once-ui/components";
 
 // Informações Pessoais (Atualizadas com base no CV e conversa)
 const person = {
@@ -23,14 +23,23 @@ const newsletter = {
 
 // Redes Sociais e Contatos (Atualizados - GitHub removido, mantendo nomes internos)
 const social = [
-  // GitHub removido conforme solicitado
   {
-    name: "LinkedIn", // Nome interno mantido
+    name: "GitHub",
+    icon: "github",
+    link: "https://github.com/LucasOlivato",
+  },
+  {
+    name: "LinkedIn",
     icon: "linkedin",
     link: "https://www.linkedin.com/in/lucas-olivato/",
   },
   {
-    name: "Email", // Nome interno mantido
+    name: "WhatsApp",
+    icon: "whatsapp",
+    link: "https://wa.me/5514991993618",
+  },
+  {
+    name: "Email",
     icon: "email",
     link: "mailto:lucasolivato@gmail.com",
   },
@@ -74,6 +83,7 @@ const about = {
         Sou um{' '}<strong>QA Engineer</strong>{' '}em transição para a era da{' '}<strong>Engenharia Assistida por IA</strong>. <br />
         Minha trajetória começou com testes manuais e evoluiu rapidamente para automação de alta complexidade. Hoje, meu foco não é apenas{' '}&quot;testar&quot;, mas arquitetar soluções de qualidade que se integram ao ciclo de vida do desenvolvimento (SDLC) desde o primeiro dia.<br />
         Sou especialista em construir frameworks de automação resilientes (Playwright, Cypress) e em orquestrar agentes de inteligência artificial para otimizar processos de validação. Acredito que a qualidade do futuro é preditiva e integrada.
+        {/* Spacing fix applied */}
       </>
     ), // Descrição atualizada
   },
@@ -105,7 +115,20 @@ const about = {
           <>Experiência em garantia de qualidade para SAP, incluindo análise de dados, automação de validações com SQL e colaboração na implementação de regras fiscais e integrações.</>,
           <>Aplicação de práticas ágeis (TDD/BDD) e colaboração em pipelines de CI/CD.</>,
           <>Elaboração de casos de teste, planos de teste e documentação técnica.</>,
-          <>**Conquista:** Implementei automação de criação de pedidos via UI com Robot Framework para superar a limitação de acesso à API e a lentidão do processo manual. O script gerou com sucesso aproximadamente 600 pedidos ao longo de 10 horas de execução contínua, viabilizando testes de carga essenciais para um novo microsserviço de logística e otimizando significativamente o tempo da equipe.</>
+          <>
+            <p>
+              <strong>Conquista:</strong> Automação de criação de pedidos via UI com Robot Framework (600+ pedidos em 10h), viabilizando testes de carga críticos.
+            </p>
+            <br />
+            <Button
+              href="/work/sap-automation"
+              suffixIcon="arrowRight"
+              variant="tertiary"
+              size="s"
+            >
+              Ver Projeto
+            </Button>
+          </>,
         ],
         images: [],
       },
@@ -151,6 +174,11 @@ const about = {
     display: true,
     title: "Habilidades Técnicas", // Título mantido
     skills: [
+      {
+        title: "IA & Automação Moderna",
+        description: <>Agentes Autônomos, LLMs para QA, Prompt Engineering, Engenharia de Prompt, RAG.</>,
+        images: [],
+      },
       {
         title: "Automação de Testes",
         description: <>Robot Framework, Selenium WebDriver, Cypress, Playwright, Postman/Newman, Python (PyTest), JUnit, TestNG, RestAssured.</>,

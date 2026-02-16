@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
 import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text } from "@/once-ui/components";
-import { AutomationDashboard } from "@/components"; // Import from index
+import { AutomationDashboard, TestSimulator } from "@/components"; // Import from index
+import { LiveTerminal } from "@/components/common/LiveTerminal";
+import { SapTerminal } from "@/components/common/SapTerminal";
 import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
@@ -100,20 +102,36 @@ export default function Project({ params }: WorkParams) {
           }),
         }}
       />
+
+
       <Column maxWidth="xs" gap="16">
         <Button href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
           Projects
         </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+        <Heading 
+            variant="display-strong-s" 
+            wrap="balance" 
+            style={{ maxWidth: '100%' }}
+        >
+            {post.metadata.title}
+        </Heading>
       </Column>
-      {post.metadata.images.length > 0 && (
-        <SmartImage
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
-        />
+      
+      {params.slug === 'portfolio-automation' ? (
+        <LiveTerminal />
+      ) : params.slug === 'sap-automation' ? (
+        <SapTerminal />
+      ) : (
+        post.metadata.images.length > 0 && (
+            <SmartImage
+            priority
+            aspectRatio="16 / 9"
+            radius="m"
+            alt="image"
+            src={post.metadata.images[0]}
+            objectFit="contain"
+            />
+        )
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <Flex gap="12" marginBottom="24" vertical="center">
@@ -122,7 +140,7 @@ export default function Project({ params }: WorkParams) {
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
           </Text>
         </Flex>
-        <CustomMDX source={post.content} components={{ AutomationDashboard: AutomationDashboard as any }} />
+        <CustomMDX source={post.content} components={{ AutomationDashboard: AutomationDashboard as any, TestSimulator: TestSimulator as any }} />
       </Column>
       <ScrollToHash />
     </Column>

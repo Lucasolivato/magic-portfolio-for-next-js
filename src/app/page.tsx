@@ -143,7 +143,7 @@ export default function Home() {
 
       {/* Section: Projects Preview */}
       <RevealFx translateY="16" delay={1.0} fillWidth>
-         <Column maxWidth="m" gap="24" paddingY="m" paddingX="l">
+         <Column maxWidth="m" gap="8" paddingY="s" paddingX="l">
             <Heading as="h2" variant="display-strong-xs">
                 Meus Projetos Recentes
             </Heading>

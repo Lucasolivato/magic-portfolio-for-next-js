@@ -19,6 +19,7 @@ interface ProjectCardProps {
   description: string;
   avatars: { src: string }[];
   link: string;
+  objectFit?: React.CSSProperties["objectFit"];
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -29,6 +30,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   avatars,
   link,
+  objectFit = "cover",
 }) => {
   return (
     <Column fillWidth gap="m">
@@ -38,6 +40,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           src: image,
           alt: title,
         }))}
+        objectFit={objectFit}
       />
       <Flex
         mobileDirection="column"

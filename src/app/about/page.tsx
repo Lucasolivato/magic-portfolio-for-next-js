@@ -122,7 +122,7 @@ export default function About() {
               horizontal="center"
             >
               <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
+            <Flex gap="8" vertical="center" style={{ whiteSpace: "nowrap" }}>
               <Icon onBackground="accent-weak" name="globe" />
               {/* Displaying fixed location as requested */}
               Igaraçu do Tietê - SP
@@ -137,7 +137,27 @@ export default function About() {
                 ))}
               </Flex>
             )}
-          </Column>
+
+            {/* GitHub button moved here */}
+            {social.length > 0 && (
+              <Flex paddingTop="16" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
+                 {social.filter(item => item.name === "GitHub").map((item) =>
+                  item.link && (
+                    <React.Fragment key={item.name}>
+                      <Button
+                        href={item.link}
+                        prefixIcon={item.icon}
+                        label={item.name}
+                        size="s"
+                        variant="secondary"
+                        target="_blank"
+                      />
+                    </React.Fragment>
+                  ),
+                )}
+              </Flex>
+            )}
+        </Column>
         )}
         <Column className={styles.blockAlign} flex={9}>
           <Column
@@ -147,31 +167,7 @@ export default function About() {
             vertical="center"
             marginBottom="32"
           >
-            {about.calendar.display && (
-              <Flex
-                fitWidth
-                border="brand-alpha-medium"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-              >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Flex>
-            )}
+
             <Heading className={styles.textAlign} variant="display-strong-xl" style={{ whiteSpace: "nowrap" }}>
               {person.name}
             </Heading>
@@ -182,31 +178,14 @@ export default function About() {
             >
               {person.role}
             </Text>
-            {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
-                {/* Using item.name as key, assuming social media names are unique */}
-                {social.map((item) =>
-                  item.link && (
-                    // Using React.Fragment shorthand with key for the group
-                    <React.Fragment key={item.name}>
-                      <Button
-                        href={item.link}
-                        prefixIcon={item.icon}
-                        label={item.name}
-                        size="s"
-                        variant="secondary"
-                        target="_blank" // Added target blank
-                      />
-                    </React.Fragment>
-                  ),
-                )}
-              </Flex>
-            )}
+
           </Column>
 
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+            <Column fillWidth gap="m" marginBottom="xl">
+              <Text variant="body-default-l" onBackground="neutral-weak">
+                {about.intro.description}
+              </Text>
             </Column>
           )}
 
