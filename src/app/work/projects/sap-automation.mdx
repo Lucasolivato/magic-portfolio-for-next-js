@@ -1,0 +1,40 @@
+---
+title: "Automação de Pedidos em SAP via UI"
+publishedAt: "2024-05-10"
+summary: "Como superei limitações de API e automatizei a criação de 600 pedidos complexos no SAP Business One usando Robot Framework para viabilizar testes de carga críticos."
+images:
+  - "/images/projects/robot_framework_automation.png"
+team:
+  - name: "Lucas Olivato"
+    role: "Analista de QA"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/lucas-olivato/"
+---
+
+## Desafio: O Gargalo de Dados
+
+Durante a implementação de um novo microsserviço de logística crítico para a operação, a equipe de QA se deparou com um **bloqueio severo**:
+
+> "Precisamos validar a performance do sistema processando milhares de pedidos, mas a API de criação de pedidos do ERP (SAP B1) está instável e o ambiente de homologação está vazio."
+
+Criar essa massa de dados manualmente levaria semanas (estimativa de 5-10 min por pedido). O projeto estava em risco de atraso ou, pior, de ir para produção sem testes de carga adequados.
+
+## A Solução: RPA "Fora da Caixa"
+
+Diante das limitações da API, projetei uma solução de **RPA (Robotic Process Automation)** que ignora as barreiras do backend e "dirige" a interface do usuário como um humano faria, mas na velocidade da máquina.
+
+### Arquitetura da Solução
+
+1.  **Robot Framework + Python:** O cérebro da automação, orquestrando a lógica de negócio e geração de dados dinâmicos.
+2.  **Visão Computacional (Sikuli/ImageHorizon):** Como o SAP Desktop utiliza componentes não-padrão (difíceis de mapear por seletores tradicionais), utilizei reconhecimento de imagem para identificar campos, botões e mensagens de erro com precisão pixel-perfect.
+3.  **Resiliência:** Implementação de tratamento de erros automáticos (ex: fechar pop-ups inesperados, reconectar em caso de queda) para permitir execução noturna sem supervisão.
+
+## Resultados Impactantes
+
+A execução do robô transformou o cenário do projeto:
+
+- **Volume Massivo:** ~600 pedidos complexos gerados em uma única noite (10h de execução contínua).
+- **Eficiência Extrema:** O que levaria ~80 horas-homem foi realizado em 10 horas-máquina (zero custo humano).
+- **Qualidade Garantida:** A massa de dados viabilizou os testes de carga, identificando gargalos de performance que foram corrigidos _antes_ do Go-Live.
+
+> **Conclusão:** A automação não serviu apenas para testar, mas para **viabilizar** o próprio desenvolvimento, removendo dependências externas e desbloqueando a entrega de valor.

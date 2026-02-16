@@ -11,6 +11,7 @@ const person = {
   avatar: "/images/avatar.jpg", // Manter avatar padrão
   location: "America/Sao_Paulo", // Localização atualizada
   languages: ["Português Nativo", "Inglês (Técnico)"], // Idiomas atualizados
+  cv: "/Curriculo_Lucas_Olivato.pdf", // Link para o CV
 };
 
 // Newsletter object updated to include title and description
@@ -40,13 +41,11 @@ const home = {
   label: "Home", // Label mantido
   title: `Portfólio de ${person.name}`, // Título atualizado
   description: `Portfólio profissional destacando experiência como ${person.role}. Conheça meus projetos, habilidades e trajetória na área de QA.`, // Descrição atualizada
-  headline: <>Analista de Qualidade | Automação de Testes | SAP QA</>, // Headline atualizada
+  headline: <>Especialista em Automação de Testes | QA Engineer focado em IA & Performance</>, // Headline atualizada
   subline: (
     <>
-      Olá, sou Lucas — Analista de Qualidade de Software.<br />
-      Atuo garantindo a excelência de produtos digitais por meio de testes manuais e automatizados, sempre com foco na entrega de valor, estabilidade e experiência do usuário.<br />
-      Tenho experiência em ambientes diversos, como SAP e APIs, e estou em constante evolução técnica e profissional.<br /><br />
-      Fique à vontade para explorar meus projetos e conhecer mais sobre minha trajetória!
+      Elevo o padrão de produtos digitais com <strong>Engenharia de Qualidade</strong> moderna.<br /><br />
+      Utilizo <strong>Agentes de IA</strong> e <strong>Playwright</strong> para criar ecossistemas de testes que não apenas encontram bugs, mas aceleram o desenvolvimento e blindam a experiência do usuário.
     </>
   ), // Subline atualizado
 };
@@ -65,16 +64,16 @@ const about = {
   },
   calendar: {
     display: false,
+    link: "https://cal.com/lucas-olivato", // Placeholder link
   },
   intro: {
     display: true,
     title: "Introdução", // Título mantido
     description: (
       <>
-        Profissional de Qualidade de Software com sólida atuação em testes manuais e automação, aplicando metodologias ágeis em times multidisciplinares.<br />
-        Atuo com foco em qualidade desde o planejamento até a entrega, garantindo eficiência e confiabilidade nos sistemas.<br />
-        Possuo conhecimentos consolidados em ferramentas como Postman, Robot Framework, Cypress e práticas de CI/CD.<br />
-        Tenho facilidade em transitar entre áreas técnicas e de negócio, sempre buscando evoluir soluções e entregar valor real ao produto.
+        Sou um{' '}<strong>QA Engineer</strong>{' '}em transição para a era da{' '}<strong>Engenharia Assistida por IA</strong>. <br />
+        Minha trajetória começou com testes manuais e evoluiu rapidamente para automação de alta complexidade. Hoje, meu foco não é apenas{' '}&quot;testar&quot;, mas arquitetar soluções de qualidade que se integram ao ciclo de vida do desenvolvimento (SDLC) desde o primeiro dia.<br />
+        Sou especialista em construir frameworks de automação resilientes (Playwright, Cypress) e em orquestrar agentes de inteligência artificial para otimizar processos de validação. Acredito que a qualidade do futuro é preditiva e integrada.
       </>
     ), // Descrição atualizada
   },
@@ -211,10 +210,16 @@ const work = {
       image: "/images/projects/plantaofarma_info.jpg", // Imagem ATUALIZADA
     },
     {
+      name: "Portfólio Automation",
+      description: "Engenharia de Software de Alta Qualidade aplicada a este portfólio. Desenvolvimento assistido por Agentes de IA, com pipeline de testes E2E (Playwright) e validação de acessibilidade (Axe-core), garantindo um produto final robusto e inclusivo.",
+      link: "/work/portfolio-automation",
+      image: "/images/projects/portfolio-automation/after-fixes.png",
+    },
+    {
       name: "Automação de Pedidos (Tecnologia Única)",
       description: "Script de automação (Robot Framework) para criação de pedidos via UI, gerando ~600 pedidos em 10h para viabilizar testes de carga de um novo microsserviço de logística e otimizar o tempo da equipe.", // Descrição da conquista do CV
-      link: "#", // Sem link aplicável
-      image: "/images/projects/plantaofarma_icon.png", // Imagem ATUALIZADA (usando o ícone como placeholder)
+      link: "/work/sap-automation", // Link atualizado para a case study page
+      image: "/images/projects/robot_framework_automation.png", // Imagem ATUALIZADA (usando o ícone como placeholder)
     },
     // Adicionar outros projetos se houver
   ],

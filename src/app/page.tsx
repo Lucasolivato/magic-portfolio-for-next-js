@@ -1,12 +1,11 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Icon } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects"; // Updated path if needed
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
-import { Mailchimp } from "@/components";
-import { Posts } from "@/components/blog/Posts";
+import { AutomationDashboard, TechStackTerminal } from "@/components"; // Import new components
 
 export async function generateMetadata() {
   const title = home.title;
@@ -76,47 +75,75 @@ export default function Home() {
             </Text>
           </RevealFx>
           <RevealFx translateY="12" delay={0.4} horizontal="start">
-            <Button
-              id="about"
-              data-border="rounded"
-              href="/about"
-              variant="secondary"
-              size="m"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center">
-                {about.avatar.display && (
-                  <Avatar
-                    style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
-                    src={person.avatar}
+              <Flex gap="16" vertical="center" fillWidth mobileDirection="column" horizontal="start">
+                <Flex gap="8">
+                    <Button
+                    id="about"
+                    data-border="rounded"
+                    href="/about"
+                    variant="secondary"
                     size="m"
-                  />
-                )}
-                {about.label}
-              </Flex>
-            </Button>
+                    arrowIcon
+                    >
+                    <Flex gap="8" vertical="center">
+                        {about.avatar.display && (
+                        <Avatar
+                            style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
+                            src={person.avatar}
+                            size="m"
+                            aria-label="Avatar de Lucas"
+                        />
+                        )}
+                        {about.label}
+                    </Flex>
+                    </Button>
+                    <Button
+                    id="download-cv"
+                    data-border="rounded"
+                    href={person.cv}
+                    variant="primary"
+                    size="m"
+                    download
+                    >
+                    <Flex gap="8" vertical="center">
+                        Download CV
+                    </Flex>
+                    </Button>
+                </Flex>
+             </Flex>
+             {/* Scroll Indicator */}
+             <Flex fillWidth horizontal="center" paddingTop="l" style={{ opacity: 0.7 }}>
+                 <div style={{ animation: 'bounce 2s infinite' }}>
+                    <Icon name="chevronDown" size="l" />
+                 </div>
+             </Flex>
           </RevealFx>
         </Column>
       </Column>
 
-      {/* Section: QA Profile Summary & Highlight */}
+      {/* Section: Interactive Automation Dashboard */}
       <RevealFx translateY="16" delay={0.6} fillWidth>
-        <Column maxWidth="m" gap="m" paddingY="l" paddingX="l">
+         <Column maxWidth="m" paddingX="l" gap="l">
+            <Heading as="h2" variant="display-strong-xs">
+                Status de Automação em Tempo Real
+            </Heading>
+            <AutomationDashboard interactive={true} />
+         </Column>
+      </RevealFx>
+
+      {/* Section: Tech Stack Terminal */}
+      <RevealFx translateY="16" delay={0.8} fillWidth>
+        <Column maxWidth="m" paddingX="l" gap="l">
           <Heading as="h2" variant="display-strong-xs">
-            Perfil e Destaques como QA
+            Arsenal Técnico
           </Heading>
-          <Text onBackground="neutral-weak">
-            Analista de QA dedicado à garantia da qualidade de software, com foco em automação de testes (Robot Framework, Selenium, Cypress, Postman, Python) e experiência em testes funcionais, de carga, API e em ambientes SAP.
-          </Text>
-          <Text variant="body-strong-m" onBackground="neutral-weak">
-            Destaque: Automatizei mais de 600 pedidos via UI em 10h contínuas com Robot Framework, permitindo testes de carga essenciais para microsserviços logísticos.
-          </Text>
+          <TechStackTerminal />
         </Column>
       </RevealFx>
 
       {/* Section: Projects Preview */}
-      <RevealFx translateY="16" delay={0.8} fillWidth>
-         <Column maxWidth="m" gap="m" paddingY="l" paddingX="l">
+      <RevealFx translateY="16" delay={1.0} fillWidth>
+         <Column maxWidth="m" gap="24" paddingY="m" paddingX="l">
             <Heading as="h2" variant="display-strong-xs">
                 Meus Projetos Recentes
             </Heading>
@@ -125,10 +152,16 @@ export default function Home() {
          </Column>
       </RevealFx>
 
-      {/* Seção de Blog removida */}
+        {/* Global Styles for bounce animation (could be in module.css but inline for speed/safety) */}
+        <style dangerouslySetInnerHTML={{__html: `
+            @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-5px);}
+            60% {transform: translateY(-3px);}
+            }
+        `}} />
 
-      {/* Section: Newsletter (Kept as is) */}
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
+
     </Column>
   );
 }

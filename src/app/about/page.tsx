@@ -139,7 +139,7 @@ export default function About() {
             )}
           </Column>
         )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+        <Column className={styles.blockAlign} flex={9}>
           <Column
             id={about.intro.title} // ID used for navigation, not React key
             fillWidth
@@ -172,7 +172,7 @@ export default function About() {
                 />
               </Flex>
             )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
+            <Heading className={styles.textAlign} variant="display-strong-xl" style={{ whiteSpace: "nowrap" }}>
               {person.name}
             </Heading>
             <Text
@@ -190,21 +190,10 @@ export default function About() {
                     // Using React.Fragment shorthand with key for the group
                     <React.Fragment key={item.name}>
                       <Button
-                        className="s-flex-hide"
-                        // key prop moved to Fragment
                         href={item.link}
                         prefixIcon={item.icon}
                         label={item.name}
                         size="s"
-                        variant="secondary"
-                        target="_blank" // Added target blank
-                      />
-                      <IconButton
-                        className="s-flex-show"
-                        size="l"
-                        // key prop moved to Fragment
-                        href={item.link}
-                        icon={item.icon}
                         variant="secondary"
                         target="_blank" // Added target blank
                       />

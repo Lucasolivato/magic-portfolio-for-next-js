@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
 import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text } from "@/once-ui/components";
+import { AutomationDashboard } from "@/components"; // Import from index
 import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
@@ -121,7 +122,7 @@ export default function Project({ params }: WorkParams) {
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
           </Text>
         </Flex>
-        <CustomMDX source={post.content} />
+        <CustomMDX source={post.content} components={{ AutomationDashboard: AutomationDashboard as any }} />
       </Column>
       <ScrollToHash />
     </Column>

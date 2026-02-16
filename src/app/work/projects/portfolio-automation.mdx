@@ -1,0 +1,60 @@
+---
+title: "Automação e Acessibilidade do Portfólio"
+publishedAt: "2026-02-14"
+summary: "Como utilizei Agentes de IA, Playwright e Axe-core para transformar este portfólio em um exemplo vivo de Qualidade de Software."
+images:
+  - "/images/projects/portfolio-automation/after-fixes.png"
+  - "/images/projects/portfolio-automation/before-fixes.png"
+team:
+  - name: "Lucas Olivato"
+    role: "QA Automation"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/lucas-olivato/"
+---
+
+## O Desafio
+
+Este portfólio não é apenas uma vitrine de projetos passados, mas um **projeto ativo de engenharia de software**. O objetivo era garantir que ele fosse tecnicamente impecável, acessível a todos os usuários e otimizado para performance, utilizando as mesmas ferramentas que aplico em ambientes corporativos de alta escala.
+
+## A Solução: Engenharia Assistida por IA
+
+Para alcançar esse nível de qualidade, implementei um pipeline de "Engenharia Assistida por Agentes", onde atuei como Arquiteto de Automação, guiando um agente de IA através de um roteiro rigoroso de diagnóstico e refatoração.
+
+### Stack Tecnológica
+
+- **Playwright:** Para automação de testes E2E e simulação de jornadas de usuário.
+- **Axe-core:** Para análise profunda e automatizada de acessibilidade.
+- **Next.js:** Framework React para performance e SEO.
+- **AI Agents:** Para aceleração do desenvolvimento e análise de código.
+
+## Diagnóstico Inicial (Antes)
+
+Na fase inicial de diagnóstico, identificamos 3 violações críticas de acessibilidade e a ausência de links fundamentais para a jornada do recrutador (como o download do CV).
+
+<img
+  src="/images/projects/portfolio-automation/before-fixes.png"
+  alt="Interface antes das correções mostrando problemas de contraste e falta de elementos"
+  style={{ maxWidth: "100%", height: "auto" }}
+/>
+
+## Implementação e Resultados (Depois)
+
+Através de um ciclo de TDD (Test Driven Development) adaptado, implementamos correções incrementais. O resultado final é um site com **Zero Violações de Acessibilidade** e uma experiência de usuário fluida.
+
+<img
+  src="/images/projects/portfolio-automation/after-fixes.png"
+  alt="Interface atual otimizada e acessível"
+  style={{ maxWidth: "100%", height: "auto" }}
+/>
+
+### Melhorias Implementadas
+
+1.  **Acessibilidade Universal:** Inclusão de landmarks (`<main>`), `aria-labels` em controles interativos e descrições para leitores de tela.
+2.  **Jornada do Usuário:** Implementação estratégica de Call-to-Actions (como o download do CV) baseada em dados de navegação.
+3.  **Performance:** Otimização de carregamento de fontes e imagens.
+
+## O Futuro: Dashboard Vivo
+
+Este projeto continua evoluindo. O próximo passo é a implementação de um **"Dashboard de Automação Vivo"**, que exibirá em tempo real o status dos testes que rodam a cada novo deploy, provando que a qualidade é uma entrega contínua, não um evento único.
+
+<AutomationDashboard />

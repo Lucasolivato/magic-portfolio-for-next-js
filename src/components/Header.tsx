@@ -59,7 +59,22 @@ export const Header = () => {
         horizontal="center"
       >
         <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Flex hide="s">{person.location}</Flex>}
+          <Flex hide="s">
+            <span
+              role="img"
+              aria-label="Ladybug"
+              title="Bug Hunter!"
+              style={{
+                cursor: "pointer",
+                fontSize: "24px",
+                transition: "transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "rotate(360deg) scale(1.2)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "rotate(0deg) scale(1)")}
+            >
+              🐞
+            </span>
+          </Flex>
         </Flex>
         <Flex fillWidth horizontal="center">
           <Flex
@@ -72,7 +87,7 @@ export const Header = () => {
           >
             <Flex gap="4" vertical="center" textVariant="body-default-s">
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} aria-label="Home" />
               )}
               <Line vert maxHeight="24" />
               {routes["/about"] && (
@@ -83,12 +98,14 @@ export const Header = () => {
                     href="/about"
                     label={about.label}
                     selected={pathname === "/about"}
+                    aria-label={about.label}
                   />
                   <ToggleButton
                     className="s-flex-show"
                     prefixIcon="person"
                     href="/about"
                     selected={pathname === "/about"}
+                    aria-label={about.label}
                   />
                 </>
               )}
@@ -100,12 +117,14 @@ export const Header = () => {
                     href="/work"
                     label={work.label}
                     selected={pathname.startsWith("/work")}
+                    aria-label={work.label}
                   />
                   <ToggleButton
                     className="s-flex-show"
                     prefixIcon="grid"
                     href="/work"
                     selected={pathname.startsWith("/work")}
+                    aria-label={work.label}
                   />
                 </>
               )}
@@ -117,12 +136,14 @@ export const Header = () => {
                     href="/blog"
                     label={blog.label}
                     selected={pathname.startsWith("/blog")}
+                    aria-label={blog.label}
                   />
                   <ToggleButton
                     className="s-flex-show"
                     prefixIcon="book"
                     href="/blog"
                     selected={pathname.startsWith("/blog")}
+                    aria-label={blog.label}
                   />
                 </>
               )}
@@ -134,12 +155,14 @@ export const Header = () => {
                     href="/gallery"
                     label={gallery.label}
                     selected={pathname.startsWith("/gallery")}
+                    aria-label={gallery.label}
                   />
                   <ToggleButton
                     className="s-flex-show"
                     prefixIcon="gallery"
                     href="/gallery"
                     selected={pathname.startsWith("/gallery")}
+                    aria-label={gallery.label}
                   />
                 </>
               )}

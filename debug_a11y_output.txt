@@ -1,0 +1,6 @@
+Violations found:
+
+Rule: role-img-alt
+Description: Ensure [role="img"] elements have alternative text
+Nodes:
+- HTML: <div class="display-flex surface-background neutral-border-strong border-solid border-1 radius-full justify-center align-center position-relative undefined Avatar_m__epOAa " role="img" style="margin-left: -0.75rem; margin-right: 0.25rem;">

@@ -56,7 +56,7 @@ export function Projects({ range, summaryMode = false }: ProjectsProps) {
             variant="secondary"
             size="m"
             arrowIcon
-            style={{ alignSelf: "flex-start", marginTop: "var(--static-space-m)" }} // Align button left
+            style={{ alignSelf: "flex-start", marginTop: "0" }} // Align button left and remove extra top margin
           >
             Ver todos os projetos
           </Button>
