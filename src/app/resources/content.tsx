@@ -47,16 +47,16 @@ const social = [
 
 // Página Home (Atualizada)
 const home = {
-  label: "Home", // Label mantido
-  title: `Portfólio de ${person.name}`, // Título atualizado
-  description: `Portfólio profissional destacando experiência como ${person.role}. Conheça meus projetos, habilidades e trajetória na área de QA.`, // Descrição atualizada
-  headline: <>Especialista em Automação de Testes | QA Engineer focado em IA & Performance</>, // Headline atualizada
+  label: "Home",
+  title: `${person.name}'s Portfolio`,
+  description: `Portfolio website showcasing my work as an ${person.role}`,
+  headline: <>Especialista em Automação de Testes | QA Engineer focado em IA & Performance</>,
   subline: (
     <>
-      Elevo o padrão de produtos digitais com <strong>Engenharia de Qualidade</strong> moderna.<br /><br />
-      Utilizo <strong>Agentes de IA</strong> e <strong>Playwright</strong> para criar ecossistemas de testes que não apenas encontram bugs, mas aceleram o desenvolvimento e blindam a experiência do usuário.
+      Elevo o padrão de produtos digitais com <strong className="font-strong">Engenharia de Qualidade</strong> moderna.<br/>
+      Utilizo <strong className="font-strong">Agentes de IA</strong> e <strong className="font-strong">Playwright</strong> para criar ecossistemas de testes que não apenas encontram bugs, mas aceleram o desenvolvimento e blindam a experiência do usuário.
     </>
-  ), // Subline atualizado
+  ),
 };
 
 // Página Sobre (Atualizada com base no CV e conversa)
@@ -232,12 +232,6 @@ const work = {
   description: `Conheça alguns projetos desenvolvidos por ${person.name}.`, // Descrição atualizada
   projects: [
     {
-      name: "PlantãoFarma App (TCC)",
-      description: "Co-desenvolvi um aplicativo mobile em React Native, com backend em Node.js e banco de dados MongoDB, para localizar farmácias de plantão próximas. O aplicativo simplifica a busca e integra-se com apps de mapa (Google Maps/Waze) para navegação direta, solucionando uma necessidade local e demonstrando habilidades em desenvolvimento full-stack mobile.", // Descrição atualizada do TCC
-      link: "https://github.com/Heloisa-Moraes/PlantaoFarma", // Link ATUALIZADO para o GitHub
-      image: "/images/projects/plantaofarma_info.jpg", // Imagem ATUALIZADA
-    },
-    {
       name: "Portfólio Automation",
       description: "Engenharia de Software de Alta Qualidade aplicada a este portfólio. Desenvolvimento assistido por Agentes de IA, com pipeline de testes E2E (Playwright) e validação de acessibilidade (Axe-core), garantindo um produto final robusto e inclusivo.",
       link: "/work/portfolio-automation",
@@ -248,6 +242,12 @@ const work = {
       description: "Script de automação (Robot Framework) para criação de pedidos via UI, gerando ~600 pedidos em 10h para viabilizar testes de carga de um novo microsserviço de logística e otimizar o tempo da equipe.", // Descrição da conquista do CV
       link: "/work/sap-automation", // Link atualizado para a case study page
       image: "/images/projects/robot_framework_automation.png", // Imagem ATUALIZADA (usando o ícone como placeholder)
+    },
+    {
+      name: "PlantãoFarma App (TCC)",
+      description: "Co-desenvolvi um aplicativo mobile em React Native, com backend em Node.js e banco de dados MongoDB, para localizar farmácias de plantão próximas. O aplicativo simplifica a busca e integra-se com apps de mapa (Google Maps/Waze) para navegação direta, solucionando uma necessidade local e demonstrando habilidades em desenvolvimento full-stack mobile.", // Descrição atualizada do TCC
+      link: "https://github.com/Heloisa-Moraes/PlantaoFarma", // Link ATUALIZADO para o GitHub
+      image: "/images/projects/plantaofarma_info.jpg", // Imagem ATUALIZADA
     },
     // Adicionar outros projetos se houver
   ],

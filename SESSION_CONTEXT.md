@@ -6,19 +6,21 @@ Phase 6: Refinements & Polish (IN PROGRESS)
 
 ## Last Completed Task
 
-**Sucesso Parcial (com Erro de Build):**
+**Polimento Final e Restore de Dependências (Concluído):**
 
-- Ajustes visuais finos na Home, About e Projects (espaçamento, quebra de linha).
-- Correção de texto na página Sobre.
-- Adição de skill de IA.
-- Commit realizado: `style(ui): polish visual details and fix content spacing`.
-- **Atenção:** O build local falhou na página `/about` com erro de sintaxe.
+- **Estabilidade:** Revertido Next.js para v14 (resolvendo conflitos do `npm audit`).
+- **Correções Visuais:**
+  - Botão "GitHub" na página Sobre centralizado com os idiomas.
+  - Botão de voltar nos Projetos traduzido para "Projetos".
+  - Texto da Home com destaque em negrito.
+- **Correções Técnicas:**
+  - Erro de Runtime `Column as="article"` corrigido.
+  - Componentes `LiveTerminal` e `ComparativeCard` reintegrados.
 
-## Immediate Task (Next Session - Critical)
+## Immediate Task (Next Session)
 
-1.  **Corrigir Erro de Build:** Investigar e corrigir `Syntax Error` em `src/app/about/page.tsx` (provável problema de fechamento de tags ou imports).
-2.  **Verificação Mobile:** Realizar varredura completa de responsividade em **TODAS** as páginas (foco em quebras de layout em telas pequenas).
-3.  **Deploy Final:** Validar build e subir para produção.
+1.  **Monitoramento:** Acompanhar deploy em produção (Vercel/Amplify).
+2.  **Validação Final:** Testar todas as rotas em dispositivo móvel real.
 
 ## Guidelines (Golden Rule)
 

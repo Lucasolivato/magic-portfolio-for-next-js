@@ -6,4 +6,6 @@ export { RouteGuard } from "@/components/RouteGuard";
 export { default as AutomationDashboard } from "@/components/AutomationDashboard";
 export { default as TechStackTerminal } from "@/components/TechStackTerminal";
 export { TestSimulator } from "@/components/TestSimulator";
+export { LiveTerminal } from "@/components/common/LiveTerminal";
+export { ComparativeCard } from "@/components/common/ComparativeCard";
 

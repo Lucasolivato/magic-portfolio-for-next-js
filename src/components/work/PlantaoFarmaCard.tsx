@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react"; // Import useEffect and useRef
-import { Column, Flex, Text, SmartImage, IconButton, Button } from "@/once-ui/components"; // Added Button
+import { Column, Flex, Text, Heading, SmartImage, IconButton, Button, SmartLink } from "@/once-ui/components"; // Added Heading
 import styles from "./PlantaoFarmaCard.module.scss";
 
 interface PlantaoFarmaCardProps {
@@ -152,10 +152,12 @@ export const PlantaoFarmaCard: React.FC<PlantaoFarmaCardProps> = ({ project }) =
 
       {/* Right Side: Project Description */}
       <Column flex={2} gap="m">
-        <Text variant="heading-strong-l">{project.name}</Text>
+        <SmartLink href={project.link || "#"} style={{ margin: "0", width: "fit-content" }}>
+            <Heading variant="heading-strong-l">{project.name}</Heading>
+        </SmartLink>
         {/* Dynamic Description based on current slide */}
         <div ref={descriptionRef} className={`${styles.dynamicDescription} ${!isDescriptionVisible ? styles.descriptionFade : ''}`}>
-          <Text variant="body-default-m" onBackground="neutral-weak">
+          <Text variant="body-default-m" onBackground="neutral-strong">
             {currentContent.description}
           </Text>
         </div>

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
 import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text } from "@/once-ui/components";
-import { AutomationDashboard, TestSimulator } from "@/components"; // Import from index
+import { AutomationDashboard, TestSimulator, ComparativeCard } from "@/components"; // Import from index
 import { LiveTerminal } from "@/components/common/LiveTerminal";
 import { SapTerminal } from "@/components/common/SapTerminal";
 import { baseURL } from "@/app/resources";
@@ -106,7 +106,7 @@ export default function Project({ params }: WorkParams) {
 
       <Column maxWidth="xs" gap="16">
         <Button href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
-          Projects
+          Projetos
         </Button>
         <Heading 
             variant="display-strong-s" 
@@ -133,15 +133,15 @@ export default function Project({ params }: WorkParams) {
             />
         )
       )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
+      <Flex style={{ margin: "auto" }} as="article" maxWidth="xs" direction="column">
         <Flex gap="12" marginBottom="24" vertical="center">
           {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
           <Text variant="body-default-s" onBackground="neutral-weak">
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
           </Text>
         </Flex>
-        <CustomMDX source={post.content} components={{ AutomationDashboard: AutomationDashboard as any, TestSimulator: TestSimulator as any }} />
-      </Column>
+        <CustomMDX source={post.content} components={{ AutomationDashboard: AutomationDashboard as any, TestSimulator: TestSimulator as any, LiveTerminal: LiveTerminal as any, ComparativeCard: ComparativeCard as any }} />
+      </Flex>
       <ScrollToHash />
     </Column>
   );

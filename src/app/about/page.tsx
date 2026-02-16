@@ -127,38 +127,28 @@ export default function About() {
               {/* Displaying fixed location as requested */}
               Igaraçu do Tietê - SP
             </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
-                {/* Using language string itself as key, assuming they are unique */}
-                {person.languages.map((language) => (
+            <Flex wrap gap="8" horizontal="center" fillWidth>
+              {person.languages.map((language) => (
                   <Tag key={language} size="l">
                     {language}
                   </Tag>
                 ))}
-              </Flex>
-            )}
-
-            {/* GitHub button moved here */}
-            {social.length > 0 && (
-              <Flex paddingTop="16" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
-                 {social.filter(item => item.name === "GitHub").map((item) =>
+              {social.filter(item => item.name === "GitHub").map((item) =>
                   item.link && (
-                    <React.Fragment key={item.name}>
-                      <Button
-                        href={item.link}
-                        prefixIcon={item.icon}
-                        label={item.name}
-                        size="s"
-                        variant="secondary"
-                        target="_blank"
-                      />
-                    </React.Fragment>
-                  ),
-                )}
-              </Flex>
-            )}
-        </Column>
-        )}
+                    <Button
+                      key={item.name}
+                      href={item.link}
+                      prefixIcon={item.icon}
+                      label={item.name}
+                      size="s"
+                      variant="secondary"
+                      target="_blank"
+                    />
+                  )
+              )}
+            </Flex>
+          </Column>
+          )}
         <Column className={styles.blockAlign} flex={9}>
           <Column
             id={about.intro.title} // ID used for navigation, not React key

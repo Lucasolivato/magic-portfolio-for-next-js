@@ -82,12 +82,14 @@ Create Sales Order
         gap="l"
       >
         <Flex flex={5}>
-          <Heading as="h2" wrap="balance" variant="heading-strong-xl">
-            {project.name}
-          </Heading>
+           <SmartLink href={project.link || "#"} style={{ margin: "0", width: "fit-content" }}>
+                <Heading as="h2" wrap="balance" variant="heading-strong-xl">
+                    {project.name}
+                </Heading>
+            </SmartLink>
         </Flex>
         <Column flex={7} gap="16">
-          <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+          <Text wrap="balance" variant="body-default-m" onBackground="neutral-strong">
             {project.description}
           </Text>
           <Flex gap="24" wrap>
