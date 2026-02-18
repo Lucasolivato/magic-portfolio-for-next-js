@@ -76,7 +76,7 @@ export default function Home() {
           </RevealFx>
           <RevealFx translateY="12" delay={0.4} horizontal="start">
               <Flex gap="16" vertical="center" fillWidth mobileDirection="column" horizontal="start">
-                <Flex gap="8">
+                <Flex gap="8" wrap>
                     <Button
                     id="about"
                     data-border="rounded"
